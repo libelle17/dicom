@@ -70,6 +70,7 @@ T_	./dicom.h	/^enum T_      $/;"	g
 T_Aendere_Feld	./DB.h	/^  T_Aendere_Feld,$/;"	e	enum:Txdb_
 T_Aktiviere_Dienst	./kons.h	/^  T_Aktiviere_Dienst,$/;"	e	enum:Tkons_
 T_Alle_wieviel_Minuten_soll	./kons.h	/^	T_Alle_wieviel_Minuten_soll,$/;"	e	enum:Tkons_
+T_Archivverzeichnis_anstatt	./dicom.h	/^	T_Archivverzeichnis_anstatt,$/;"	e	enum:T_
 T_Arzt	./dicom.h	/^	T_Arzt,$/;"	e	enum:T_
 T_Aufnahmedatum	./dicom.h	/^	T_Aufnahmedatum,$/;"	e	enum:T_
 T_Aufrufintervall	./kons.h	/^	T_Aufrufintervall,$/;"	e	enum:Tkons_
@@ -169,6 +170,7 @@ T_Konnte_regulaeren_Ausdruck_nicht_kompilieren	./kons.h	/^	T_Konnte_regulaeren_A
 T_Lesespalten	./DB.h	/^  T_Lesespalten,$/;"	e	enum:Txdb_
 T_Letzte_Programmaenderung	./kons.h	/^	T_Letzte_Programmaenderung,$/;"	e	enum:Tkons_
 T_Libtiff_Version	./kons.h	/^	T_Libtiff_Version,$/;"	e	enum:Tkons_
+T_Liest_Dicom_Dateien_aus	./dicom.h	/^	T_Liest_Dicom_Dateien_aus,$/;"	e	enum:T_
 T_Linkverzeichnis	./kons.h	/^	T_Linkverzeichnis,$/;"	e	enum:Tkons_
 T_Loesche_Ausrufezeichen	./kons.h	/^  T_Loesche_Ausrufezeichen,$/;"	e	enum:Tkons_
 T_Logdatei	./kons.h	/^  T_Logdatei,$/;"	e	enum:Tkons_
@@ -205,6 +207,7 @@ T_Progvers	./kons.h	/^	T_Progvers,$/;"	e	enum:Tkons_
 T_Pruefe_Tabelle	./DB.h	/^  T_Pruefe_Tabelle,$/;"	e	enum:Txdb_
 T_Quelldateien_in	./kons.h	/^	T_Quelldateien_in,$/;"	e	enum:Tkons_
 T_Quelle	./kons.h	/^	T_Quelle,$/;"	e	enum:Tkons_
+T_Quellverzeichnis_anstatt	./dicom.h	/^	T_Quellverzeichnis_anstatt,$/;"	e	enum:T_
 T_Referenz	./DB.h	/^	T_Referenz,$/;"	e	enum:Txdb_
 T_Rueckmeldung	./kons.h	/^  T_Rueckmeldung,$/;"	e	enum:Tkons_
 T_Samba_muesste_installiert_werden_soll_ich	./kons.h	/^	T_Samba_muesste_installiert_werden_soll_ich,$/;"	e	enum:Tkons_
@@ -243,6 +246,8 @@ T_Zeige	./DB.h	/^	T_Zeige,$/;"	e	enum:Txdb_
 T_Zeigt_die_Programmversion_an	./kons.h	/^	T_Zeigt_die_Programmversion_an,$/;"	e	enum:Tkons_
 T_Zeilen	./kons.h	/^  T_Zeilen,$/;"	e	enum:Tkons_
 T_Zeit_Doppelpunkt	./kons.h	/^	T_Zeit_Doppelpunkt,$/;"	e	enum:Tkons_
+T_Zielverzeichnis_anstatt	./dicom.h	/^	T_Zielverzeichnis_anstatt,$/;"	e	enum:T_
+T_Zweites_Zielverzeichnis_anstatt	./dicom.h	/^	T_Zweites_Zielverzeichnis_anstatt,$/;"	e	enum:T_
 T_activating	./kons.h	/^	T_activating,$/;"	e	enum:Tkons_
 T_aktuelle_Einstellungen_aus	./kons.h	/^	T_aktuelle_Einstellungen_aus,$/;"	e	enum:Tkons_
 T_alle	./kons.h	/^	T_alle,$/;"	e	enum:Tkons_
@@ -260,6 +265,8 @@ T_autokonfschreib	./kons.h	/^	T_autokonfschreib,$/;"	e	enum:Tkons_
 T_automatisch_installiert_werden	./kons.h	/^	T_automatisch_installiert_werden,$/;"	e	enum:Tkons_
 T_autoupd_k	./kons.h	/^	T_autoupd_k,$/;"	e	enum:Tkons_
 T_autoupd_l	./kons.h	/^	T_autoupd_l,$/;"	e	enum:Tkons_
+T_avz_k	./dicom.h	/^	T_avz_k,$/;"	e	enum:T_
+T_avz_l	./dicom.h	/^	T_avz_l,$/;"	e	enum:T_
 T_bearbeiten_sehen	./kons.h	/^	T_bearbeiten_sehen,$/;"	e	enum:Tkons_
 T_beenden	./kons.h	/^  T_beenden,$/;"	e	enum:Tkons_
 T_bei	./kons.h	/^	T_bei,$/;"	e	enum:Tkons_
@@ -318,6 +325,7 @@ T_j	./DB.h	/^  T_j,$/;"	e	enum:Txdb_
 T_j_af	./kons.h	/^	T_j_af,$/;"	e	enum:Tkons_
 T_j_k	./kons.h	/^  T_j_k,$/;"	e	enum:Tkons_
 T_ja	./kons.h	/^	T_ja,$/;"	e	enum:Tkons_
+T_jahr	./dicom.h	/^	T_jahr,$/;"	e	enum:T_
 T_kauswert	./kons.h	/^	T_kauswert,$/;"	e	enum:Tkons_
 T_kd_k	./kons.h	/^	T_kd_k,$/;"	e	enum:Tkons_
 T_kein_Aufruf	./kons.h	/^	T_kein_Aufruf,$/;"	e	enum:Tkons_
@@ -343,6 +351,7 @@ T_language_l	./kons.h	/^	T_language_l,$/;"	e	enum:Tkons_
 T_laueft_schon_einmal_aber	./kons.h	/^	T_laueft_schon_einmal_aber,$/;"	e	enum:Tkons_
 T_ld_k	./kons.h	/^	T_ld_k,$/;"	e	enum:Tkons_
 T_ldn_k	./kons.h	/^	T_ldn_k,$/;"	e	enum:Tkons_
+T_letzten_Import_rueckgaengig	./dicom.h	/^	T_letzten_Import_rueckgaengig,$/;"	e	enum:T_
 T_lg_k	./kons.h	/^	T_lg_k,$/;"	e	enum:Tkons_
 T_lh_k	./kons.h	/^	T_lh_k,$/;"	e	enum:Tkons_
 T_lhilfe_l	./kons.h	/^	T_lhilfe_l,$/;"	e	enum:Tkons_
@@ -420,7 +429,11 @@ T_pvirtVorgbSpeziell	./dicom.h	/^	T_pvirtVorgbSpeziell,$/;"	e	enum:T_
 T_pvirtfuehraus	./dicom.h	/^	T_pvirtfuehraus,$/;"	e	enum:T_
 T_pvirtvorpruefggfmehrfach	./dicom.h	/^	T_pvirtvorpruefggfmehrfach,$/;"	e	enum:T_
 T_pvirtvorrueckfragen	./dicom.h	/^	T_pvirtvorrueckfragen,$/;"	e	enum:T_
+T_qvz_k	./dicom.h	/^	T_qvz_k,$/;"	e	enum:T_
+T_qvz_l	./dicom.h	/^	T_qvz_l,$/;"	e	enum:T_
 T_rf_k	./kons.h	/^	T_rf_k,$/;"	e	enum:Tkons_
+T_rueck_k	./dicom.h	/^	T_rueck_k,$/;"	e	enum:T_
+T_rueck_l	./dicom.h	/^	T_rueck_l,$/;"	e	enum:T_
 T_rueckfragen_l	./kons.h	/^	T_rueckfragen_l,$/;"	e	enum:Tkons_
 T_rueckzufragen	./kons.h	/^	T_rueckzufragen,$/;"	e	enum:Tkons_
 T_rueckzufragen_wegen	./kons.h	/^	T_rueckzufragen_wegen,$/;"	e	enum:Tkons_
@@ -431,6 +444,7 @@ T_sec_Breche_ab	./kons.h	/^	T_sec_Breche_ab,$/;"	e	enum:Tkons_
 T_semodpruef	./kons.h	/^	T_semodpruef,$/;"	e	enum:Tkons_
 T_sh	./kons.h	/^	T_sh,$/;"	e	enum:Tkons_
 T_sonst_knapper	./kons.h	/^	T_sonst_knapper,$/;"	e	enum:Tkons_
+T_speichert_sie_als_png_Bilder_in	./dicom.h	/^	T_speichert_sie_als_png_Bilder_in,$/;"	e	enum:T_
 T_sprachstr	./kons.h	/^	T_sprachstr,$/;"	e	enum:Tkons_
 T_spruef_sname	./kons.h	/^  T_spruef_sname,$/;"	e	enum:Tkons_
 T_sql_verbose_l	./DB.h	/^	T_sql_verbose_l,$/;"	e	enum:Txdb_
@@ -447,7 +461,9 @@ T_tabelle_l	./DB.h	/^	T_tabelle_l,$/;"	e	enum:Txdb_
 T_tb_k	./DB.h	/^	T_tb_k,$/;"	e	enum:Txdb_
 T_trenne	./kons.h	/^	T_trenne,$/;"	e	enum:Tkons_
 T_unbek	./kons.h	/^	T_unbek,$/;"	e	enum:Tkons_
+T_und	./dicom.h	/^	T_und,$/;"	e	enum:T_
 T_und_Feld	./DB.h	/^  T_und_Feld,$/;"	e	enum:Txdb_
+T_und_verschiebt_zuletzt_die_Orignale_nach	./dicom.h	/^	T_und_verschiebt_zuletzt_die_Orignale_nach,$/;"	e	enum:T_
 T_unveraendert	./kons.h	/^	T_unveraendert,$/;"	e	enum:Tkons_
 T_v_k	./kons.h	/^	T_v_k,$/;"	e	enum:Tkons_
 T_verarbeitkonf	./kons.h	/^	T_verarbeitkonf,$/;"	e	enum:Tkons_
@@ -485,11 +501,15 @@ T_wird_benoetigt_fuer_Befehl	./DB.h	/^	T_wird_benoetigt_fuer_Befehl,$/;"	e	enum:
 T_wird_deshalb_abgebrochen	./kons.h	/^	T_wird_deshalb_abgebrochen,$/;"	e	enum:Tkons_
 T_wird_jetzt_eingetragen	./kons.h	/^	T_wird_jetzt_eingetragen,$/;"	e	enum:Tkons_
 T_wird_verwendet_anstatt	./kons.h	/^	T_wird_verwendet_anstatt,$/;"	e	enum:Tkons_
+T_z2vz_k	./dicom.h	/^	T_z2vz_k,$/;"	e	enum:T_
+T_z2vz_l	./dicom.h	/^	T_z2vz_l,$/;"	e	enum:T_
 T_zeigvers	./kons.h	/^	T_zeigvers,$/;"	e	enum:Tkons_
 T_zu	./kons.h	/^	T_zu,$/;"	e	enum:Tkons_
 T_zu_erstellen	./DB.h	/^  T_zu_erstellen,$/;"	e	enum:Txdb_
 T_zu_schreiben	./kons.h	/^	T_zu_schreiben,$/;"	e	enum:Tkons_
 T_zugreifbar_machen	./kons.h	/^  T_zugreifbar_machen,$/;"	e	enum:Tkons_
+T_zvz_k	./dicom.h	/^	T_zvz_k,$/;"	e	enum:T_
+T_zvz_l	./dicom.h	/^	T_zvz_l,$/;"	e	enum:T_
 Tabelle	./DB.cpp	/^Tabelle::Tabelle(const DB* dbp,const std::string& tbname, Feld *vfelder, const int feldzahl, Index *const vindices, const unsigned vindexzahl, $/;"	f	class:Tabelle
 Tabelle	./DB.cpp	/^Tabelle::Tabelle(const DB* dbp,const string& tbname, sfeld& fdr, Index *const indices\/*=0*\/, const unsigned vindexzahl\/*=0*\/, $/;"	f	class:Tabelle
 Tabelle	./DB.cpp	/^Tabelle::Tabelle(const DB* dbp,const string& vtbname,const size_t aktc,int obverb,int oblog): dbp(dbp),tbname(vtbname)$/;"	f	class:Tabelle
@@ -987,6 +1007,7 @@ obnmr	./kons.h	/^ uchar obnmr=1;$/;"	m	struct:linst_cl
 oboffen	./kons.h	/^  int oboffen=0;$/;"	m	class:mdatei
 obprogda	./kons.cpp	/^int obprogda(const string& prog, int obverb\/*=0*\/, int oblog\/*=0*\/, string *pfad\/*=0*\/,const int keinsu\/*=0*\/)$/;"	f
 obqueryfehler	./DB.h	/^    uchar obqueryfehler; \/\/ -1=initial, 1= mysql_send_query oder mysql_real_query ergab Fehler, 0=keinen$/;"	m	class:RS
+obrueck	./dicom.h	/^		uchar obrueck=0;   \/\/ ob der letzte Import rueckgaengig gemacht werden soll$/;"	m	class:hhcl
 obsetz	./kons.h	/^		uchar obsetz=1; \/\/ setzzaehler$/;"	m	class:hcl
 obsotiff	./kons.h	/^		uchar obsotiff=0; \/\/ 1 = tiff wird von der source verwendet$/;"	m	class:hcl
 obsvfeh	./kons.cpp	/^int servc::obsvfeh(int obverb\/*=0*\/,int oblog\/*=0*\/) \/\/ ob service einrichtungs fehler$/;"	f	class:servc

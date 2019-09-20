@@ -315,9 +315,18 @@ void hhcl::virtrueckfragen()
 {
 	hLog(violetts+Tx[T_virtrueckfragen]+", rzf: "+blau+ltoan(rzf)+schwarz);
 	if (rzf) { //ω
+    for(auto omit=opn.schl.begin();omit!=opn.schl.end();omit++) {
+			switch ((*omit)->part) {
+				case pstri:
+					caus<<*(string*)(*omit)->pptr<<endl;
+				 (*(string*)(*omit)->pptr)=Tippstr((*(*omit)->TxBp)[(*omit)->Txi],(string*)(*omit)->pptr);
+					caus<<*(string*)(*omit)->pptr<<endl;
+					break;
+			}
+		}
 	} // if (rzf) //α
-	dhcl::virtrueckfragen();
-	hcl::virtrueckfragen();
+//	dhcl::virtrueckfragen();
+//	hcl::virtrueckfragen();
 	//// opn.oausgeb(rot);
 } // void hhcl::virtrueckfragen
 //ω

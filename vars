@@ -1,12 +1,12 @@
 OSNR::=4
-IPR::=sudo /usr/bin/zypper -n --gpg-auto-import-keys in -f 
-IP_R::=sudo /usr/bin/zypper --gpg-auto-import-keys in 
-UPR::=sudo /usr/bin/zypper rm -u 
-UDPR::=sudo /usr/bin/rpm -e --nodeps 
+IPR::=/usr/bin/zypper -n --gpg-auto-import-keys in -f 
+IP_R::=/usr/bin/zypper --gpg-auto-import-keys in 
+UPR::=/usr/bin/zypper rm -u 
+UDPR::=/usr/bin/rpm -e --nodeps 
 SPR::=/usr/bin/rpm -q 
 UNROH::=uninstall
 UNF::=uninstallinv
-AUNF::=/home/schade/dicom/uninstallinv
+AUNF::=/root/dicomneu/uninstallinv
 ILOG::=inst.log
 PGROFF::=groff
 LT::=libtiff-devel
@@ -28,8 +28,8 @@ LCAPI::=
 LM18::=libmysqlclient18
 dev::=devel
 libmdb::=libmariadb libmariadbclient libmysql libmysqlclient
-REPOS::=sudo /usr/bin/zypper lr|grep 'g++\|devel_gcc' \>/dev/null 2>&1||sudo /usr/bin/zypper ar http://download.opensuse.org/repositories/devel:/gcc/`cat /etc/*-release|grep ^NAME= |cut -d'"' -f2|sed 's/ /_/'`_`cat /etc/*-release|grep ^VERSION_ID= |cut -d'"' -f2`/devel:gcc.repo;
-UREPO::=sudo /usr/bin/zypper lr|grep \"g++\\|devel_gcc\" \>/dev/null 2>&1 && sudo /usr/bin/zypper rr devel_gcc;
+REPOS::=/usr/bin/zypper lr|grep 'g++\|devel_gcc' \>/dev/null 2>&1||/usr/bin/zypper ar http://download.opensuse.org/repositories/devel:/gcc/`cat /etc/*-release|grep ^NAME= |cut -d'"' -f2|sed 's/ /_/'`_`cat /etc/*-release|grep ^VERSION_ID= |cut -d'"' -f2`/devel:gcc.repo;
+UREPO::=/usr/bin/zypper lr|grep \"g++\\|devel_gcc\" \>/dev/null 2>&1 && /usr/bin/zypper rr devel_gcc;
 COMP::=gcc gcc-c++
 GITV::=libelle17
 DTN::=dicom.cpp 		   		   dicom.h 			 DB.cpp DB.h kons.cpp kons.h 			  man_?? Makefile configure 			 install.sh 			  shliste viall .exrc uninstallinv inst.log
