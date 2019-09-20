@@ -6381,17 +6381,19 @@ int optcl::pzuweis(const char *const nacstr, const uchar vgegenteil/*=0*/, const
 } // int optcl::pzuweis
 
 optcl::optcl(const string& pname,const void* pptr,const par_t part, const int kurzi, const int langi, TxB* TxBp, const long Txi,
-		const uchar wi, const long Txi2, const string rottxt, const int iwert,const uchar woher, const long Txrf/*=-1*/,const uchar obno/*=0*/):wpgcl(pname,pptr,part),
+		const uchar wi, const long Txi2, const string rottxt, const int iwert,const uchar woher, const long Txrf/*=-1*/,const uchar obno/*=0*/,const string* refstr/*=0*/):
+	wpgcl(pname,pptr,part),
 	kurzi(kurzi),langi(langi),TxBp(TxBp),Txi(Txi),wi(wi),Txi2(Txi2),rottxt(rottxt),iwert(iwert),
-	woher(woher),Txrf(Txrf==-1?Txi:Txrf),obno(obno)/*=0*///,eingetragen(0)
+	woher(woher),Txrf(Txrf==-1?Txi:Txrf),obno(obno),refstr(refstr)/*=0*///,eingetragen(0)
 {
 ////	<<gruen<<"Erstelle optcl, pname: "<<schwarz<<violett<<pname<<endl;
 }
 
 optcl::optcl(const void* pptr,const par_t part, const int kurzi, const int langi, TxB* TxBp, const long Txi,
-		const uchar wi, const long Txi2, const string rottxt, const int iwert,const uchar woher,const uchar obno/*=0*/):wpgcl({},pptr,part),
+		const uchar wi, const long Txi2, const string rottxt, const int iwert,const uchar woher,const uchar obno/*=0*/,const string* refstr/*=0*/):
+	wpgcl({},pptr,part),
 	kurzi(kurzi),langi(langi),TxBp(TxBp),Txi(Txi),wi(wi),Txi2(Txi2),rottxt(rottxt),iwert(iwert),
-	woher(woher),obno(obno)/*=0*///,eingetragen(0)
+	woher(woher),obno(obno),refstr(refstr)/*=0*///,eingetragen(0)
 {
 ////	<<gruen<<"Erstelle optcl, pname: "<<schwarz<<violett<<pname<<endl;
 }

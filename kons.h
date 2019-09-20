@@ -817,14 +817,15 @@ struct optcl:wpgcl
     const uchar obno{0}; // ob auch die Option mit vorangestelltem 'no' eingefuegt werden soll
 		uchar gegenteil{0};
 		uchar nichtspeichern{0};
+		const string* refstr; // z.B. der User zu einem Passwort
 		const uchar virteinzutragen(/*schAcl<optcl>**/void *schlp,int obverb);
 		void virtweisomapzu(/*schAcl<optcl>**/void *schlp);
 //		void virtloeschomaps(/*schAcl<optcl>**/void *schlp);
 		void virtloeschomaps(schAcl<optcl> *schlp);
 		optcl(const string& pname,const void* pptr,const par_t art, const int kurzi, const int langi, TxB* TxBp, const long Txi,
-				const uchar wi, const long Txi2, const string rottxt, const int iwert, const uchar woher, const long Txrf=-1, const uchar obno=0);
+				const uchar wi, const long Txi2, const string rottxt, const int iwert, const uchar woher, const long Txrf=-1, const uchar obno=0,const string* refstr=0);
 		optcl(const void* pptr,const par_t art, const int kurzi, const int langi, TxB* TxBp, const long Txi,
-				const uchar wi, const long Txi2, const string rottxt, const int iwert,const uchar woher, const uchar obno=0);
+				const uchar wi, const long Txi2, const string rottxt, const int iwert,const uchar woher, const uchar obno=0,const string* refstr=0);
 		void setzwert();
 		int setzstr(const char* const neuw,uchar *const obzuschreib=0,const uchar ausDatei=0);
 		void virttusetzbemerkwoher(const string& ibemerk,const uchar vwoher);

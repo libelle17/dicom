@@ -315,13 +315,39 @@ void hhcl::virtrueckfragen()
 {
 	hLog(violetts+Tx[T_virtrueckfragen]+", rzf: "+blau+ltoan(rzf)+schwarz);
 	if (rzf) { //ω
-    for(auto omit=opn.schl.begin();omit!=opn.schl.end();omit++) {
-			switch ((*omit)->part) {
-				case pstri:
-					caus<<*(string*)(*omit)->pptr<<endl;
-				 (*(string*)(*omit)->pptr)=Tippstr((*(*omit)->TxBp)[(*omit)->Txi],(string*)(*omit)->pptr);
-					caus<<*(string*)(*omit)->pptr<<endl;
-					break;
+		for(auto omit=opn.schl.begin();omit!=opn.schl.end();omit++) {
+			if (!(*omit)->pname.empty()) {
+				string pwd2;
+				switch ((*omit)->part) {
+					case pint:
+					case plong:
+						(*(string*)(*omit)->pptr)=Tippzahl((*(*omit)->TxBp)[(*omit)->Txi],*(long*)(*omit)->pptr);
+						caus<<*(string*)(*omit)->pptr<<endl;
+						break;
+					case pverz:
+						(*(string*)(*omit)->pptr)=Tippverz((*(*omit)->TxBp)[(*omit)->Txi],(string*)(*omit)->pptr);
+						break;
+					case pdez:
+						(*(string*)(*omit)->pptr)=Tippzahl((*(*omit)->TxBp)[(*omit)->Txi],((string*)(*omit)->pptr)->c_str());
+						caus<<*(string*)(*omit)->pptr<<endl;
+						break;
+					case ppwd:
+						(*(string*)(*omit)->pptr).clear();
+						do {
+							(*(string*)(*omit)->pptr)=Tippstr(string((*(*omit)->TxBp)[(*omit)->Txi])+Txk[T_fuer_Benutzer]+dblau+*(*omit)->refstr+schwarz+"'"/*,&(*(string*)(*omit)->pptr)*/);
+							pwd2=Tippstr(string((*(*omit)->TxBp)[(*omit)->Txi])+Txk[T_fuer_Benutzer]+dblau+*(*omit)->refstr+schwarz+"'"+" ("+Txk[T_erneute_Eingabe]+")"/*,&pwd2*/);
+						} while ((*(string*)(*omit)->pptr)!=pwd2);
+						break;
+					case pstri:
+					case pfile:
+						(*(string*)(*omit)->pptr)=Tippstr((*(*omit)->TxBp)[(*omit)->Txi],(string*)(*omit)->pptr);
+						caus<<*(string*)(*omit)->pptr<<endl;
+						break;
+					case puchar:
+					case pdat:
+					case pbin:
+						break;
+				}
 			}
 		}
 	} // if (rzf) //α
