@@ -145,6 +145,48 @@ char const *DPROG_T[T_MAX+1][SprachZahl]=
 	// T_Optionen_die_nicht_gespeichert_werden
 	// T_jahr
 	{"<jahr>","<year>"},
+	// T_schonda
+	{"schon da: ","already here: "},
+	// T_schon_da
+	{" schon da!"," already here!"},
+	// T_Erstellt
+	{" Erstellt: ","Made: "},
+	// T_Fehler_beim_Datumsetzen_von
+	{"Fehler beim Datumsetzen von '","Error while setting the date for '"},
+	// T_Nr
+	{"Nr: ","No: "},
+	// T_Dicom_Dateien
+	{" Dicom-Dateien in '"," dicom files found in '"},
+	// T_Datensaetze_in_Tabelle
+	{" Datensaetze in Tabelle '"," records inserted in table '"},
+	// T_in_Datenbank
+	{"' in Datenbank '","' in database '"},
+	// T_eingetragen
+	{"' eingetragen,","',"},
+	// T_Dateien_in_Verzeichnis
+	{" Dateien in Verzeichnis '"," files created in directory '"},
+	// T_erstellt
+	{"' erstellt,","',"},
+	// T_kopiert
+	{"' kopiert,","',"},
+	// T_Keine
+	{"Keine","   No"},
+	// T_Alle
+	{" Alle","  All"},
+	// T_Dateien_von
+	{" Dateien von '"," files moved from '"},
+	// T_nach_
+	{"' nach '","' to '"},
+	// T_verschoben
+	{"' verschoben.","'."},
+	// T_verzeichnisse
+	{"verzeichnisse()","directories()"},
+	// T_Keine_Dateien_in
+	{"Keine Dateien in '","No files found in '"},
+	// T_Gefunden
+	{"' gefunden!","'!"},
+	// T_Dateien_in
+	{" Dateien in '"," files found in '"},
 	{"",""} //α
 }; // char const *DPROG_T[T_MAX+1][SprachZahl]=
 
@@ -206,7 +248,7 @@ void pruefdictab(DB *My,const string& tbn,int obverb,int oblog)
  if (tad.prueftab(aktc,obverb)) {
 	 exit(schluss(11,rots+Tx[T_Fehler_beim_Pruefen_von_dictab]+schwarz+tbn,1));
  }
-} // void paramcl::pruefdictab()
+} // void paramcl::pruefdictab
 
 int hhcl::dorueck(const size_t aktc)
 {
@@ -234,6 +276,11 @@ hhcl::hhcl(const int argc, const char *const *const argv):dhcl(argc,argv,DPROG,/
 void hhcl::virtVorgbAllg()
 {
 	hLog(violetts+Tx[T_virtVorgbAllg]+schwarz); //ω
+	findv=3;
+	qvz="/var/spool/dicomneu";
+	avz="/var/spool/dicomalt";
+	zvz="/var/spool/dicomziel";
+	z2vz="/var/spool/dicomziel2";
 	dhcl::virtVorgbAllg(); //α
 } // void hhcl::virtVorgbAllg
 
@@ -249,6 +296,8 @@ void hhcl::pvirtVorgbSpeziell()
 void hhcl::virtinitopt()
 {
 	hLog(violetts+"virtinitopt()"+schwarz); //ω
+	// Kopiervorlage:
+	// opn<<new optcl(/*pname*/"pname",/*pptr*/pptr,/*art*/pstri,/*kurzi*/T_kurz_k,/*langi*/T_lang_l,/*TxBp*/&Tx,/*Txi*/T_Option_erklaert,/*wi*/1,/*Txi2*/T_Option_Nachtext,/*rottxt*/nix,/*wert*/1,/*woher*/!pname.empty(),/*Txtrf*/{},/*obno*/1,/*refstr*/0,/*obfragz*/0,/*fnobfragz*/0,/*fnnachhz*/&hcl::fu1,/*fnvorhz*/0,/*sonderrf*/0,/*fngueltigz*/0)
 	opn<<new optcl(/*pptr*/&anhl,/*art*/puchar,T_st_k,T_stop_l,/*TxBp*/&Tx,/*Txi*/T_DPROG_anhalten,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/1); //α //ω
 	opn<<new optcl(/*pptr*/&dszahl,/*art*/pdez,T_n_k,T_dszahl_l,/*TxBp*/&Tx,/*Txi*/T_Zahl_der_aufzulistenden_Datensaetze_ist_zahl_statt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/1); //α //ω
 	opn<<new optcl(/*pname*/"duser",/*pptr*/&duser,/*art*/pstri,T_duser_k,T_duser_l,/*TxBp*/&Tx, /*Txi*/T_verwendet_fuer_Samba_den_Linux_Benutzer_string_anstatt,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!duser.empty());
@@ -257,6 +306,7 @@ void hhcl::virtinitopt()
 	opn<<new optcl(/*pname*/"avz",/*pptr*/&avz,/*art*/pverz,T_avz_k,T_avz_l,/*TxBp*/&Tx,/*Txi*/T_Archivverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!avz.empty());
 	opn<<new optcl(/*pname*/"zvz",/*pptr*/&zvz,/*art*/pverz,T_zvz_k,T_zvz_l,/*TxBp*/&Tx,/*Txi*/T_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!zvz.empty());
 	opn<<new optcl(/*pname*/"z2vz",/*pptr*/&z2vz,/*art*/pverz,T_z2vz_k,T_z2vz_l,/*TxBp*/&Tx,/*Txi*/T_Zweites_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!z2vz.empty());
+	opn<<new optcl(/*pname*/"tbn",/*pptr*/&tbn,/*art*/pstri,/*kurzi*/T_tb_k,/*langi*/T_tabelle_l,/*TxBp*/&Txd,/*Txi*/T_verwendet_die_Tabelle_string_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/!tbn.empty());
 	dhcl::virtinitopt(); //α
 } // void hhcl::virtinitopt
 
@@ -275,6 +325,9 @@ void hhcl::pvirtmacherkl()
 void hhcl::virtMusterVorgb()
 {
 	hLog(violetts+Tx[T_virtMusterVorgb]+schwarz); //ω
+	tbn="dictab";
+	duser="sturm";
+	setzbenutzer(&duser);
 	dhcl::virtMusterVorgb(); //α
 } // void hhcl::MusterVorgb
 
@@ -314,6 +367,16 @@ void hhcl::virtpruefweiteres()
 {
 	hLog(violetts+Tx[T_virtpruefweiteres]+schwarz); //ω
 	// if (initDB()) exit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab])); //α //ω
+	verzeichnisse();
+	if (!anhl && suchstr.empty())
+		rufpruefsamba();
+	if (logdateineu) tuloeschen(logdt,string(),obverb,oblog);
+	hLog(Txk[T_Logpfad]+drots+loggespfad+schwarz+Txk[T_oblog]+drot+ltoan((int)oblog)+schwarz+")");
+	// if (initDB()) exit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab])); //α //ω
+	if (initDB()) {
+		exit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab]));
+	}
+	pruefdictab(My,tbn, obverb,oblog);
 	hcl::virtpruefweiteres(); // z.Zt. leer //α
 } // void hhcl::virtpruefweiteres
 
@@ -354,19 +417,93 @@ void hhcl::pvirtnachrueckfragen() // pvirtvorpruefggfmehrfach()
 {
 	hLog(violetts+Tx[T_pvirtnachrueckfragen]+schwarz);
 	// if (initDB()) exit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab]));  //ω
+	prueftif(TIFFGetVersion());
+	pruefdcmtk();
 } // void hhcl::pvirtnachrueckfragen //α
 //ω
 void hhcl::pvirtfuehraus() //α
 { 
 	hLog(violetts+Tx[T_pvirtfuehraus]+schwarz); //ω
+	const size_t aktc{0};
+	if (obrueck) 
+		exit(dorueck(aktc));
+	machimpvz();
+	svec rueck;
+	systemrueck("find "+qvz+" -type f -not -path '*\\.*' -not -path '*DICOMDIR*'",obverb,oblog,&rueck);
+	if (!rueck.size()) {
+	 fLog(rots+Tx[T_Keine_Dateien_in]+blau+qvz+rot+Tx[T_Gefunden]+schwarz,1,0);
+	 pfehler=1;
+	} else {
+		pruefimpvz();
+		dcz=rueck.size();
+		fLog(blaus+ltoan(rueck.size())+schwarz+Tx[T_Dateien_in]+blau+qvz+schwarz+Tx[T_Gefunden],1,0);
+		for(size_t nr=0;nr<rueck.size();nr++) {
+			datcl dat(rueck[nr]);
+			if (dat.inDB(*this,aktc)) {
+				dat.aufPlatte(*this,aktc,nr);
+			}
+		} // 	for(size_t nr=0;nr<rueck.size();nr++)
+		verschieb();
+	} // 	if (!rueck.size())
 } // void hhcl::pvirtfuehraus  //α
 
 // aufgerufen in lauf
 void hhcl::virtschlussanzeige()
 {  
 	hLog(violetts+Txk[T_virtschlussanzeige]+schwarz); //ω
+	fLog(blaus+ltoan(dcz,10,0,5)+schwarz+Tx[T_Dicom_Dateien]+blau+qvz+schwarz+Txk[T_gefunden],1,1);
+	fLog(blaus+ltoan(dbz,10,0,5)+schwarz+Tx[T_Datensaetze_in_Tabelle]+blau+tbn+schwarz+Tx[T_in_Datenbank]+blau+dbq+schwarz+Tx[T_eingetragen],1,1);
+	fLog(blaus+ltoan(umz,10,0,5)+schwarz+Tx[T_Dateien_in_Verzeichnis]+blau+zvz+schwarz+Tx[T_erstellt],1,1);
+	fLog(blaus+ltoan(u2z,10,0,5)+schwarz+Tx[T_Dateien_in_Verzeichnis]+blau+z2vz+vtz+Tx[T_jahr]+schwarz+Tx[T_kopiert],1,1);
+	fLog(blaus+(pfehler?Tx[T_Keine]:Tx[T_Alle])+schwarz+Tx[T_Dateien_von]+blau+qvz+schwarz+Tx[T_nach_]+blau+avz+vtz+impvz+schwarz+Tx[T_verschoben],1,1);
 	dhcl::virtschlussanzeige(); //α
 } // void hhcl::virtschlussanzeige
+
+void hhcl::machimpvz()
+{
+	time_t jetzt;
+	time(&jetzt);
+	memcpy(&jt,localtime(&jetzt),sizeof jt);
+	strftime(impvz,16,"%Y%m%d_%H%M%S",&jt);
+	nvz=avz+vtz+impvz;
+} // void paramcl::machimpvz()
+
+void hhcl::pruefimpvz()
+{
+		pfehler= pruefverz(nvz,obverb,oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/duser,/*benutzer=*/duser,/*obmachen=*/1);
+} // void paramcl::pruefimpvz()
+
+void hhcl::verschieb()
+{
+	if (!pfehler) {
+		const string cmd{"mv -n '"+qvz+vtz+"'* '"+nvz+vtz+"'"};
+		pfehler=systemrueck(cmd,obverb,oblog);
+	} // 	if (!pfehler) 
+} // void paramcl::verschieb()
+
+void hhcl::verzeichnisse()
+{
+	hLog(violetts+Tx[T_verzeichnisse]+schwarz);
+	pruefverz(qvz,obverb,oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/duser,/*benutzer=*/duser,/*obmachen=*/1);
+	pruefverz(avz,obverb,oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/duser,/*benutzer=*/duser,/*obmachen=*/1);
+	pruefverz(zvz,obverb,oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/duser,/*benutzer=*/duser,/*obmachen=*/1);
+	pruefverz(z2vz,obverb,oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/duser,/*benutzer=*/duser,/*obmachen=*/1);
+} // paramcl:: verzeichnisse
+
+void hhcl::pruefdcmtk()
+{
+  const double dcmv=progvers("dcmj2pnm");
+	if (dcmv<3.62) {
+		int altobverb=obverb;
+		obverb=1;
+		linstp->doggfinst("cmake",obverb,oblog); 
+		const string proj="dcmtk_copy";
+		holvomnetz(proj);
+		kompiliere(proj,s_gz);
+		obverb=altobverb;
+	} // 	if (dcmv<3.62)
+} // void paramcl::pruefdcmtk()
+
  
 // aufgerufen in: main und pruefcapi
 void hhcl::virtautokonfschreib()
@@ -416,3 +553,170 @@ void hhcl::virttesterg()
 //	hLog(violetts+Txk[T_virttesterg]+schwarz);
 	fLog(violetts+Tx[T_virttesterg]+schwarz,obverb,oblog,0,0);
 } //ω
+
+constexpr const unsigned datcl::dim;
+constexpr const char *datcl::knz[dim];
+constexpr const unsigned datcl::pnnr, datcl::itnr, datcl::rpnr, datcl::tdnr, datcl::pfnr, datcl::adnr;
+
+ulong datcl::inDB(hhcl& pm,const int& aktc)
+{
+	ulong zl=0;
+	systemrueck("dcmdump '"+name+"' 2>/dev/null",pm.obverb,pm.oblog,&ir);
+	string erg[dim];
+	gibaus=0;
+	int fehltzahl=dim;
+	for(size_t zl=0;zl<ir.size();zl++) {
+		for(unsigned j=0;j<dim;j++) {
+			if (ord[j].empty()) {
+				if (ir[zl].find(knz[j])!=string::npos) {
+					size_t p1=ir[zl].find('[');
+					if (p1!=string::npos) {
+						size_t p2=ir[zl].find(']',p1);
+						if (p2!=string::npos) {
+							string roh=ir[zl].substr(p1+1,p2-p1-1);
+							gtrim(&roh);
+							if (j==tdnr) if ((p1=roh.find('\\'))!=string::npos) roh.erase(p1);
+							if ((p1=roh.find('\''))!=string::npos) roh.erase(p1);
+							if ((p1=roh.find('\"'))!=string::npos) roh.erase(p1);
+							if (j==itnr) if ((p1=roh.rfind('\\'))!=string::npos) roh.erase(0,p1+1); // ImageType
+							if (j==adnr) if ((p1=roh.rfind('.'))!=string::npos) roh.erase(p1); // AcquisitionDateTime
+							if (j==pnnr) ersetzAlle(&roh,"^",","); // PatientName
+							ord[j]=roh;
+							fehltzahl--;
+							gibaus=1;
+						} // 								if (p2!=string::npos)
+					} // 							if (p1!=string::npos)
+				} // 						if (ir[zl].find(knz[j])!=string::npos)
+			} // 					if (ord[j].empty())
+		} // 				for(unsigned j=0;j<dim;j++)
+		if (!fehltzahl) break;
+	} // 	for(size_t zl=0;zl<ir.size();zl++)
+	RS rins(pm.My,pm.tbn);
+	vector<instyp> einf;
+	for(unsigned j=0;j<dim;j++) {
+		if (j==pnnr || j==pfnr) {
+			char vor=0; //// (j==pnnr?0:1);
+			for(unsigned jj=0;jj<ord[j].length();jj++) {
+				if (vor&&vor!=','&&vor!='-') ord[j][jj]=tolower(ord[j][jj]);
+				vor=ord[j][jj];
+			} // 			for(unsigned jj=0;jj<ord[j].length();jj++)
+		} // 		if (j==pnnr || j==pfnr)
+	} // 	for(unsigned j=0;j<dim;j++)
+	einf.push_back(instyp(pm.My->DBS,"PatientName",&ord[pnnr]));
+	struct tm tmg={0};
+	strptime(ord[1].c_str(),"%Y%m%d",&tmg);
+	einf.push_back(instyp(pm.My->DBS,"Geburtsdatum",&tmg));
+	einf.push_back(instyp(pm.My->DBS,"PatientID",&ord[2]));
+	einf.push_back(instyp(pm.My->DBS,"Geschlecht",&ord[3]));
+	einf.push_back(instyp(pm.My->DBS,"Bildtyp",&ord[itnr]));
+	einf.push_back(instyp(pm.My->DBS,"ReferringPhysicianName",&ord[rpnr]));
+	einf.push_back(instyp(pm.My->DBS,"PerformingPhysicianName",&ord[6]));
+	einf.push_back(instyp(pm.My->DBS,"TransducerData",&ord[tdnr]));
+	einf.push_back(instyp(pm.My->DBS,"ProcessingFunction",&ord[pfnr]));
+	einf.push_back(instyp(pm.My->DBS,"MediaStorageSOPInstanceUID",&ord[uidnr]));
+//	if (ord[adnr].empty()) ord[adnr]=ord[adnr+1];
+	// Ersatz: Dateidatum
+	if (ord[adnr].empty()) {
+		struct stat st={0};
+		if (!lstat(name.c_str(),&st)) {
+			// ggf. AcquisitionDate mit noch hoeherer Präferenz, falls Datei editiert wurde
+			memcpy(&tma,localtime(&st.st_mtime),sizeof tma);
+			char buf[20];
+			//// strftime(buf,sizeof buf,"%Y%m%d%H%M%S",&tma); caus<<violett<<buf<<schwarz<<endl;
+			if (!ord[adnr+1].empty()) {
+				tma.tm_year=atoi(ord[adnr+1].substr(0,4).c_str())-1900;
+				tma.tm_mon=atoi(ord[adnr+1].substr(4,2).c_str())-1;
+				tma.tm_mday=atoi(ord[adnr+1].substr(6,2).c_str());
+				mktime(&tma);
+			}
+			strftime(buf,sizeof buf,"%Y%m%d%H%M%S",&tma);
+			ord[adnr]=buf;
+		} // 		if (!lstat(name.c_str(),&st))
+	} else {
+		strptime(ord[adnr].c_str(),"%Y%m%d%H%M%S",&tma);
+	} // 	if (ord[adnr].empty()) else
+	einf.push_back(instyp(pm.My->DBS,"Aufnahmedatum",&tma));
+	einf.push_back(instyp(pm.My->DBS,"Importdatum",&pm.jt));
+	if (ord[adnr].length()>8) ord[adnr].insert(8,"_"); // für bessere Lesbarkeit Datum und Zeit trennen
+	svec eindfeld;
+	eindfeld<<"PatientName";
+	eindfeld<<"Geburtsdatum";
+	eindfeld<<"PatientID";
+	eindfeld<<"Aufnahmedatum";
+	eindfeld<<"MediaStorageSOPInstanceUID";
+	int ZDB=(pm.obverb?pm.obverb-1:0);
+	zl=rins.tbins(&einf,aktc,/*sammeln=*/0,/*obverb=*/ZDB,&id,/*eindeutig=*/0,eindfeld);
+	pm.dbz+=zl;
+	if (!zl) { 
+		fLog(Tx[T_schonda]+blaus+ord[pnnr]+", "+ord[uidnr]+schwarz,1,pm.oblog);
+	}
+	fLog("ID: '"+violetts+id+schwarz+"', affected rows: "+violett+ltoan(zl)+schwarz,pm.obverb,pm.oblog);
+	return zl;
+} // void datcl::inDB
+
+
+datcl::datcl(string& name): name(name)
+{
+}
+
+// aufgerufen in main
+void datcl::aufPlatte(hhcl& pm,const size_t& aktc,const size_t& nr)
+{
+	for(unsigned j=0;j<dim;j++) {
+		if (j==adnr+1 && !ord[adnr].empty()) continue; // wenn AcquisitionDateTime fehlt, dann AcquisitionDate nehmen
+		if (j==adnr && ord[adnr].empty()) j++;
+		if (j!=itnr && j!=rpnr) {
+			if (j==uidnr && ord[j].length()>10) { // die Nummer is a bisserl z lang, der hintere Teil is guad
+				bname+=ord[j].substr(ord[j].length()-10);
+			} else {
+				bname+=ord[j];
+			}
+			if (j<dim-2) bname+='_'; // nicht am Schluss
+		} // 			if (j!=itnr && j!=rpnr)
+	} // 		for(int j=0;j<dim;j++)
+	if (id.empty()) {
+		fLog(rots+bname+schwarz+Tx[T_schon_da],pm.obverb,pm.oblog);
+	} else {
+		const string neuname=pm.zvz+"/"+bname+".png";
+		for(int iru=0;iru<2;iru++) {
+			svec srueck;
+			systemrueck("dcmj2pnm +on2 '"+name+"' > '"+neuname+"'",pm.obverb,pm.oblog,&srueck);
+			if (srueck.size()) {
+				if (srueck[0].find("no version information")==string::npos)
+							break;
+			} else {
+				break;
+			}
+			// hier dcmt installieren
+		} // 		for(int iru=0;iru<2;iru++)
+		struct stat nst={0};
+		if (!lstat(neuname.c_str(),&nst)) {
+			fLog(blaus+ltoan(nr)+schwarz+") "+Tx[T_Erstellt]+blaus+neuname+schwarz,1,pm.oblog);
+			pm.umz++;
+			const string jahr=ord[adnr].substr(0,4);
+			tma.tm_isdst=-1;
+			time_t modz=mktime(&tma);
+			struct utimbuf ub={0};
+			ub.modtime=modz;
+			ub.actime=modz;
+			if (utime(neuname.c_str(),&ub)) {
+				fLog(rots+Tx[T_Fehler_beim_Datumsetzen_von]+blau+neuname+"'"+schwarz,pm.obverb,pm.oblog);
+			}
+			uid_t duid;
+			gid_t dgid;
+			untersuser(pm.duser,&duid,&dgid);
+			systemrueck("chown "+pm.duser+":"+ltoan(dgid)+" '"+neuname+"'",pm.obverb,pm.oblog);
+			const string z2vzj=pm.z2vz+vtz+jahr;
+			if (!pruefverz(z2vzj,pm.obverb,pm.oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/pm.duser,/*benutzer=*/pm.duser,/*obmachen=*/1)) {
+				const string cmd="cp -a '"+neuname+"' '"+z2vzj+"'";
+				pm.u2z+=!systemrueck(cmd,pm.obverb,pm.oblog);
+			} // 			if (!pruefverz(z2vzj,obverb,oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/duser,/*benutzer=*/duser,/*obmachen=*/1))
+		} else {
+			RS weg(pm.My,"DELETE FROM `"+pm.tbn+"` WHERE ID="+id,aktc,pm.ZDB);
+		} // 		if (!lstat(neuname.c_str(),&nst)) else
+		//		systemrueck("touch -r '"+rueck[nr]+"' '"+neuname+"'",pm.obverb,pm.oblog); // = zu spaet
+		if (gibaus)
+			fLog(bname,pm.obverb,pm.oblog);
+		fLog(Tx[T_Nr]+blaus+ltoan(nr)+schwarz+", "+blau+name+schwarz+" "+blau+(ir.size()?ir[0]:"")+schwarz,pm.obverb,pm.oblog);
+	} // 			if (id.empty())
+} // void datcl::aufPlatte

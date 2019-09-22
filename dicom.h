@@ -69,8 +69,30 @@ enum T_
 	T_und,
 	T_und_verschiebt_zuletzt_die_Orignale_nach,
 	T_jahr,
+	T_schonda,
+	T_schon_da,
+	T_Erstellt,
+	T_Fehler_beim_Datumsetzen_von,
+	T_Nr,
+	T_Dicom_Dateien,
+	T_Datensaetze_in_Tabelle,
+	T_in_Datenbank,
+	T_eingetragen,
+	T_Dateien_in_Verzeichnis,
+	T_erstellt,
+	T_kopiert,
+	T_Keine,
+	T_Alle,
+	T_Dateien_von,
+	T_nach_,
+	T_verschoben,
+	T_verzeichnisse,
+	T_Keine_Dateien_in,
+	T_Gefunden,
+	T_Dateien_in,
 	T_MAX //α
 }; // enum T_ //ω
+
 //α
 class hhcl:public dhcl
 {
@@ -79,12 +101,12 @@ class hhcl:public dhcl
 		uchar anhl{0};    // <DPROG> anhalten
 		string dszahl{"30"}; // Datensatzzahl fuer Tabellenausgaben
 		//ω
-		string duser{"sturm"}; // ="sturm";
 		string qvz; // Quellverzeichnis // ="/DATA/Patientendokumente/HDneu";
 		string avz; // Verzeichnis alter Übertragungen // ="/DATA/Patientendokumente/HDalt";
-		string zvz; // Zielverzeichnis // ="/DATA/Patientendokumente/test";
-		string z2vz; // 2. Zielverzeichnis // ="/DATA/Patientendokumente/eingelesen";
-		uchar obrueck=0;   // ob der letzte Import rueckgaengig gemacht werden soll
+		uchar obrueck{0};   // ob der letzte Import rueckgaengig gemacht werden soll
+		int pfehler{0}; // Rueckgabewert
+		char impvz[16]; // Importverzeichnis, z.B. 20171011_082351
+    string suchstr;  // Wortteil, nach dem in alten Uebertragungen gesucht werden soll
 	protected: //α
 		string p1;
 		int p2;
@@ -92,12 +114,25 @@ class hhcl:public dhcl
 		uchar oblista{0};
 		long listz{30}; //ω
 	public: //α //ω
+    string tbn; // Tabellenname
+		struct tm jt; // Datum des Importverzeichnises
+		string zvz; // Zielverzeichnis // ="/DATA/Patientendokumente/test";
+		string z2vz; // 2. Zielverzeichnis // ="/DATA/Patientendokumente/eingelesen";
+		ulong dcz{0}; // Dicomzahl
+		ulong dbz{0}; // Datenbankzahl
+		ulong umz{0}; // Zahl der Umgewandelten
+		ulong u2z{0}; // Zahl der nach Ziel 2 Verschobenen
+		string duser; // ="sturm";
+		string nvz; // Gesamtpfad Importverzeichnis, z.B. /DATA/Patientendokumente/HDalt/20171011_082351
 	private: //α //ω
 		int dorueck(const size_t aktc);
 		void virttesterg(); //α
 		void virtlieskonfein();
 		void virtautokonfschreib();
 		void anhalten(); //ω
+		void pruefimpvz();
+		void verschieb();
+		void verzeichnisse();
 	protected: //α
 		void virtVorgbAllg();
 		void pvirtVorgbSpeziell()
@@ -120,9 +155,32 @@ class hhcl:public dhcl
 		void pvirtfuehraus();
 		void virtschlussanzeige();
 		void zeigdienste(); //ω
+		void pruefdcmtk();
 	public: //α
 		hhcl(const int argc, const char *const *const argv);
     void rufpruefsamba();
+		void machimpvz();
 		~hhcl();
 		friend class fsfcl;
 }; // class hhcl //ω
+
+class datcl
+{
+	private:
+		static constexpr const char *knz[]{"PatientName","PatientBirthDate","PatientID","PatientSex","ImageType","ReferringPhysicianName","PerformingPhysicianName","TransducerData","ProcessingFunction","MediaStorageSOPInstanceUID","AcquisitionDateTime","AcquisitionDate"};
+		static constexpr const unsigned dim{sizeof knz/sizeof *knz}; // =12;
+		static constexpr const unsigned pnnr{0}, itnr{4}, rpnr{5}, tdnr{7}, pfnr{8}, uidnr{9}, adnr{10};
+		string id; // Rueckgabe: ID
+		svec ir;
+	public:
+		string name;
+		uchar gibaus;
+		string bname;
+		string ord[dim];
+		struct tm tma={0}; // Aufnahmedatum
+	public:
+		ulong inDB(hhcl& pm, const int& aktc);
+		void aufPlatte(hhcl& pm,const size_t& aktc,const size_t& nr);
+		datcl(string& name);
+};
+

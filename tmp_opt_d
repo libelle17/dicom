@@ -1,5 +1,5 @@
 .br
-                                                                                                                                                                                      \fRProgramm: \fB/home/schade/dicom/dicom\fR, V: \fB0.10110 \fR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \fRProgramm: \fB/home/schade/dicom/dicom\fR, V: \fB0.10165 \fR
 .br
 \fBOptionen, die nicht gespeichert werden (aktueller Wert in Klammern): \fR
 .br
@@ -41,13 +41,15 @@
 .br
 \fB -duser, --duser <string>\fR: verwendet fuer Samba den Linux-Benutzer <string> anstatt ('\fBsturm\fR')
 .br
-\fB -qvz, --quellvz <pfad>\fR: Quellverzeichnis anstatt  ('\fB\fR')
+\fB -qvz, --quellvz <pfad>\fR: Quellverzeichnis anstatt  ('\fB/var/spool/dicomneu\fR')
 .br
-\fB -avz, --archvz <pfad>\fR: Archiverzeichnis anstatt  ('\fB\fR')
+\fB -avz, --archvz <pfad>\fR: Archiverzeichnis anstatt  ('\fB/var/spool/dicomalt\fR')
 .br
-\fB -zvz, --zielvz <pfad>\fR: Zielverzeichnis anstatt  ('\fB\fR')
+\fB -zvz, --zielvz <pfad>\fR: Zielverzeichnis anstatt  ('\fB/var/spool/dicomziel\fR')
 .br
-\fB -z2vz, --ziel2vz <pfad>\fR: Zweites Zielverzeichnis anstatt  ('\fB\fR')
+\fB -z2vz, --ziel2vz <pfad>\fR: Zweites Zielverzeichnis anstatt  ('\fB/var/spool/dicomziel2\fR')
+.br
+\fB -tb, --tabelle <string>\fR: verwendet die Tabelle <string> anstatt ('\fBdictab\fR')
 .br
 \fB -host, --host <string>\fR: verwendet die Datenbank auf Host <string> anstatt auf ('\fBlocalhost\fR')
 .br
