@@ -144,6 +144,7 @@ T_Fertig_mit	./kons.h	/^	T_Fertig_mit,$/;"	e	enum:Tkons_
 T_Fertig_mit_Parsen_der_Befehlszeile	./kons.h	/^	T_Fertig_mit_Parsen_der_Befehlszeile,$/;"	e	enum:Tkons_
 T_Firewallport	./kons.h	/^	T_Firewallport,$/;"	e	enum:Tkons_
 T_Folge	./kons.h	/^	T_Folge,$/;"	e	enum:Tkons_
+T_Frage_ab	./kons.h	/^	T_Frage_ab,$/;"	e	enum:Tkons_
 T_Freie_Software	./kons.h	/^	T_Freie_Software,$/;"	e	enum:Tkons_
 T_Fuege_ein	./dicom.h	/^	T_Fuege_ein, \/\/ω$/;"	e	enum:T_
 T_Fuehre_aus	./kons.h	/^  T_Fuehre_aus,$/;"	e	enum:Tkons_
@@ -718,7 +719,7 @@ elem2	./kons.h	/^    elem2(){};$/;"	f	struct:elem2
 elem2	./kons.h	/^struct elem2$/;"	s
 elem3	./kons.h	/^    elem3(string pfad, const struct stat *sbp, int& tflag, const struct FTW *ftwp, string lnk,const struct stat& lst):$/;"	f	struct:elem3
 elem3	./kons.h	/^struct elem3$/;"	s
-elemzahl	./kons.h	500;"	d
+elemzahl	./kons.h	501;"	d
 elemzahlT	./kons.h	/^template<typename T> size_t elemzahlT(T& v){return sizeof(v)\/sizeof(*v);}$/;"	f
 enableggf	./kons.cpp	/^int servc::enableggf(int obverb\/*=0*\/,int oblog\/*=0*\/)$/;"	f	class:servc
 ename	./kons.h	/^    string sname,ename; \/\/ Dienstname, Exename$/;"	m	class:servc
@@ -792,6 +793,28 @@ folgep	./kons.h	/^    static int *folgep;$/;"	m	struct:find3cl
 frisch	./kons.cpp	/^template<typename SCL> void schAcl<SCL>::frisch()$/;"	f	class:schAcl
 ftw	./kons.h	/^    const struct FTW ftw={0};$/;"	m	struct:elem3	typeref:struct:elem3::FTW
 fuersamba	./kons.cpp	/^void fuersamba(string& roh)$/;"	f
+fui0	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui1	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui10	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui2	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui3	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui4	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui5	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui6	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui7	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui8	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fui9	./kons.cpp	/^int hcl::fui0(){return 0;}; int hcl::fui1(){return 0;}; int hcl::fui2(){return 0;}; int hcl::fui3(){return 0;}; int hcl::fui4(){return 0;}; int hcl::fui5(){return 0;}; int hcl::fui6(){return 0;}; int hcl::fui7(){return 0;}; int hcl::fui8(){return 0;}; int hcl::fui9(){return 0;}; int hcl::fui10(){return 0;};$/;"	f	class:hcl
+fuv0	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv1	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv10	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv2	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv3	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv4	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv5	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv6	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv7	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv8	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
+fuv9	./kons.cpp	/^void hcl::fuv0(){}; void hcl::fuv1(){}; void hcl::fuv2(){}; void hcl::fuv3(){}; void hcl::fuv4(){}; void hcl::fuv5(){}; void hcl::fuv6(){}; void hcl::fuv7(){}; void hcl::fuv8(){}; void hcl::fuv9(){}; void hcl::fuv10(){};$/;"	f	class:hcl
 geaendert	./DB.h	/^    unsigned long long  geaendert; \/\/ fuer INSERT, UPDATE und DELETE ueber doAbfrage$/;"	m	class:RS
 gelb	./kons.cpp	/^			*const gruen="\\e[0;32m", *const hgruen="\\e[1;32m", *const braun="\\e[0;33m", *const gelb="\\e[1;33m",$/;"	v
 gelb	./kons.cpp	/^const char *const drot="", *const rot="", *const schwarz="", *const blau="", *const gelb="", *const tuerkis="", *const hgrau="";$/;"	v
@@ -996,7 +1019,7 @@ obenabled	./kons.h	/^		int obenabled=0;$/;"	m	class:servc
 oberreicht	./kons.cpp	/^int perfcl::oberreicht(unsigned long sek)$/;"	f	class:perfcl
 obfehlt	./kons.cpp	/^int linst_cl::obfehlt(const string& prog,int obverb,int oblog)$/;"	f	class:linst_cl
 obfragz	./kons.h	/^		const uchar* obfragz; \/\/ Zeiger auf Variable, die ggf. mit 1 bezeichnet, dass Option in rueckfragen abgefragt werden soll;$/;"	m	struct:optcl
-obfstream	./kons.h	1061;"	d
+obfstream	./kons.h	1062;"	d
 obgelesen	./kons.h	/^	uchar obgelesen;$/;"	m	struct:confdcl
 obhilfe	./kons.h	/^    uchar obhilfe=0;      \/\/ Hilfe anzeigen: 1=kurze Hilfe, 2=lange Hilfe, 3=Standardhilfe$/;"	m	class:hcl
 obind	./DB.h	/^    bool obind;$/;"	m	struct:Feld
@@ -1180,7 +1203,6 @@ setz_gitv	./Makefile	/^define setz_gitv$/;"	m
 setzbemerkwoher	./kons.cpp	/^template<typename SCL> void schAcl<SCL>::setzbemerkwoher(SCL *optp,const string& ibemerk,const uchar vwoher)$/;"	f	class:schAcl
 setzbemv	./kons.cpp	/^template<typename SCL> void schAcl<SCL>::setzbemv(const string& pname,TxB *TxBp,size_t Tind,uchar obfarbe,svec *fertige)$/;"	f	class:schAcl
 setzbenutzer	./kons.cpp	/^void hcl::setzbenutzer(string *const user)$/;"	f	class:hcl
-setzlog	./dicom.cpp	/^void hhcl::setzlog()$/;"	f	class:hhcl
 setzlog	./kons.cpp	/^void hcl::setzlog()$/;"	f	class:hcl
 setzrpw	./DB.cpp	/^void DB::setzrpw(int obverb\/*=0*\/,int oblog\/*=0*\/) \/\/ Setze root-password$/;"	f	class:DB
 setzstr	./kons.cpp	/^int WPcl::setzstr(const char* const neuw,uchar *const obzuschreib\/*=0*\/,const uchar ausDatei\/*=0*\/)$/;"	f	class:WPcl
@@ -1281,7 +1303,7 @@ uchar	./DB.h	/^typedef unsigned char	uchar;	\/* Short for unsigned char *\/$/;"	
 uchar	./kons.h	/^typedef unsigned char uchar; \/\/ 1 Byte$/;"	t
 udpr	./kons.h	/^ string udpr;   \/\/ Befehl zum direkten Deinstallieren$/;"	m	struct:linst_cl
 uebers	./kons.h	/^		stringstream uebers; \/\/ Ueberschrift fuer Verarbeitungslauf$/;"	m	class:hcl
-uebersichtlich	./kons.cpp	5733;"	d	file:
+uebersichtlich	./kons.cpp	5741;"	d	file:
 ull	./kons.h	/^typedef unsigned long long ull;$/;"	t
 umgek	./kons.cpp	/^      *const tuerkis="\\e[0;36m", *const htuerkis="\\e[1;36m", *const hgrau="\\e[0;37m", *const weiss="\\e[1;37m", *const umgek="\\e[7m";$/;"	v
 unbek	./kons.h	/^enum distroenum{unbek=-1,Mint,Ubuntu,Debian,Suse,Fedora,Fedoraalt,Mageia,Manjaro};$/;"	e	enum:distroenum
@@ -1296,7 +1318,7 @@ user	./DB.h	/^    const string user;$/;"	m	class:DB
 usr_lib64_vz	./kons.h	/^		string usr_lib64_vz;$/;"	m	class:lsyscl
 usys	./kons.h	/^enum lsysen:uchar {usys,sus,deb,fed};$/;"	e	enum:lsysen
 uypr	./kons.h	/^ string uypr;   \/\/ Befehl zum Deinstallieren ueber das Installationssystem ohne Rueckfrage$/;"	m	struct:linst_cl
-vagenau	./kons.cpp	1391;"	d	file:
+vagenau	./kons.cpp	1393;"	d	file:
 vector_incl	./kons.h	32;"	d
 verarbeit	./kons.cpp	/^int find3cl::verarbeit(const char *fpath, const struct stat *sb, int tflag, struct FTW *ftwbuf)$/;"	f	class:find3cl
 verarbeitkonf	./kons.cpp	/^void hcl::verarbeitkonf()$/;"	f	class:hcl
