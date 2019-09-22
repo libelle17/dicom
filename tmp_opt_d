@@ -1,5 +1,5 @@
 .br
-                                                                                                                                                                                      \fRProgramm: \fB/home/schade/dicom/dicom\fR, V: \fB0.10062 \fR
+                                                                                                                                                                                      \fRProgramm: \fB/home/schade/dicom/dicom\fR, V: \fB0.10109 \fR
 .br
 \fBOptionen, die nicht gespeichert werden (aktueller Wert in Klammern): \fR
 .br
@@ -39,7 +39,7 @@
 .br
 \fBOptionen z.Speich. i.Konfigur'datei (vorausg. '1'=doch nicht speichern, 'no'=Gegenteil, z.B. '-noocra','-1noocri'):\fR
 .br
-\fB -duser, --duser <string>\fR: verwendet fuer Samba den Linux-Benutzer <string> anstatt ('\fB\fR')
+\fB -duser, --duser <string>\fR: verwendet fuer Samba den Linux-Benutzer <string> anstatt ('\fBsturm\fR')
 .br
 \fB -qvz, --quellvz <pfad>\fR: Quellverzeichnis anstatt  ('\fB\fR')
 .br

@@ -21,7 +21,6 @@ enum T_
 	T_pvirtVorgbSpeziell,
 	T_virtMusterVorgb,
 	T_pvirtvorrueckfragen,
-	T_virtrueckfragen,
 	T_virtpruefweiteres,
 	T_virtmacherkl_Tx_lgn,
 	T_Fehler_beim_Pruefen_von,
@@ -35,7 +34,7 @@ enum T_
 	T_dszahl_l,
 	T_Zahl_der_aufzulistenden_Datensaetze_ist_zahl_statt,
 	T_Datenbank_nicht_initialisierbar_breche_ab,
-	T_pvirtvorpruefggfmehrfach,
+	T_pvirtnachrueckfragen,
 	T_pvirtfuehraus,
 	T_in_pvirtfuehraus_pidw,
 	T_virttesterg,
@@ -80,7 +79,7 @@ class hhcl:public dhcl
 		uchar anhl{0};    // <DPROG> anhalten
 		string dszahl{"30"}; // Datensatzzahl fuer Tabellenausgaben
 		//ω
-		string duser; // ="sturm";
+		string duser{"sturm"}; // ="sturm";
 		string qvz; // Quellverzeichnis // ="/DATA/Patientendokumente/HDneu";
 		string avz; // Verzeichnis alter Übertragungen // ="/DATA/Patientendokumente/HDalt";
 		string zvz; // Zielverzeichnis // ="/DATA/Patientendokumente/test";
@@ -100,7 +99,6 @@ class hhcl:public dhcl
 		void virtautokonfschreib();
 		void anhalten(); //ω
 	protected: //α
-		// void virtlgnzuw(); // wird aufgerufen in: virtrueckfragen, parsecl, lieskonfein, hcl::hcl nach holsystemsprache
 		void virtVorgbAllg();
 		void pvirtVorgbSpeziell()
 #ifdef VOMHAUPTCODE
@@ -113,10 +111,9 @@ class hhcl:public dhcl
 		void pvirtvorzaehler();
 		void virtzeigversion(const string& ltiffv=string());
 		void pvirtvorrueckfragen();
-		void virtrueckfragen();
 		void neurf();
 		void pvirtnachvi();
-		void pvirtvorpruefggfmehrfach();
+		void pvirtnachrueckfragen(); // pvirtvorpruefggfmehrfach();
 		void virtpruefweiteres();
 		void virtzeigueberschrift();
 		void loeschenix();

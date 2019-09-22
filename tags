@@ -157,7 +157,6 @@ T_Host_fuer_MySQL_MariaDB_Datenbank	./DB.h	/^	T_Host_fuer_MySQL_MariaDB_Datenban
 T_Importdatum	./dicom.h	/^	T_Importdatum,$/;"	e	enum:T_
 T_Ins_Deinstallationsprogramm_wird_eingetragen	./kons.h	/^	T_Ins_Deinstallationsprogramm_wird_eingetragen,$/;"	e	enum:Tkons_
 T_Installationsverzeichnis	./kons.h	/^	T_Installationsverzeichnis,$/;"	e	enum:Tkons_
-T_Intervall_Minuten	./kons.h	/^	T_Intervall_Minuten,$/;"	e	enum:Tkons_
 T_Kann_Datei	./kons.h	/^  T_Kann_Datei,$/;"	e	enum:Tkons_
 T_Kein_cron_gesetzt_nicht_zu_setzen	./kons.h	/^	T_Kein_cron_gesetzt_nicht_zu_setzen,$/;"	e	enum:Tkons_
 T_Kompiliert	./kons.h	/^	T_Kompiliert,$/;"	e	enum:Tkons_
@@ -415,6 +414,8 @@ T_optausg	./kons.h	/^	T_optausg,$/;"	e	enum:Tkons_
 T_or	./kons.h	/^	T_or,$/;"	e	enum:Tkons_
 T_parsecl	./kons.h	/^	T_parsecl,$/;"	e	enum:Tkons_
 T_pfad	./kons.h	/^  T_pfad,$/;"	e	enum:Tkons_
+T_pptr_darf_nicht_null_sein_bei	./kons.h	/^	T_pptr_darf_nicht_null_sein_bei,$/;"	e	enum:Tkons_
+T_pptr_gefunden	./kons.h	/^	T_pptr_gefunden,$/;"	e	enum:Tkons_
 T_protokolliert_ausfuehrlich_in_Datei	./kons.h	/^	T_protokolliert_ausfuehrlich_in_Datei,$/;"	e	enum:Tkons_
 T_pruefDB	./DB.h	/^	T_pruefDB,$/;"	e	enum:Txdb_
 T_pruefberecht	./kons.h	/^	T_pruefberecht,$/;"	e	enum:Tkons_
@@ -427,13 +428,14 @@ T_pruefsamba	./kons.h	/^	T_pruefsamba,$/;"	e	enum:Tkons_
 T_prueftif	./kons.h	/^	T_prueftif,$/;"	e	enum:Tkons_
 T_pvirtVorgbSpeziell	./dicom.h	/^	T_pvirtVorgbSpeziell,$/;"	e	enum:T_
 T_pvirtfuehraus	./dicom.h	/^	T_pvirtfuehraus,$/;"	e	enum:T_
-T_pvirtvorpruefggfmehrfach	./dicom.h	/^	T_pvirtvorpruefggfmehrfach,$/;"	e	enum:T_
+T_pvirtnachrueckfragen	./dicom.h	/^	T_pvirtnachrueckfragen,$/;"	e	enum:T_
 T_pvirtvorrueckfragen	./dicom.h	/^	T_pvirtvorrueckfragen,$/;"	e	enum:T_
 T_qvz_k	./dicom.h	/^	T_qvz_k,$/;"	e	enum:T_
 T_qvz_l	./dicom.h	/^	T_qvz_l,$/;"	e	enum:T_
 T_rf_k	./kons.h	/^	T_rf_k,$/;"	e	enum:Tkons_
 T_rueck_k	./dicom.h	/^	T_rueck_k,$/;"	e	enum:T_
 T_rueck_l	./dicom.h	/^	T_rueck_l,$/;"	e	enum:T_
+T_rueckfragen	./kons.h	/^	T_rueckfragen,$/;"	e	enum:Tkons_
 T_rueckfragen_l	./kons.h	/^	T_rueckfragen_l,$/;"	e	enum:Tkons_
 T_rueckzufragen	./kons.h	/^	T_rueckzufragen,$/;"	e	enum:Tkons_
 T_rueckzufragen_wegen	./kons.h	/^	T_rueckzufragen_wegen,$/;"	e	enum:Tkons_
@@ -485,7 +487,6 @@ T_virtlgnzuw_langu	./kons.h	/^	T_virtlgnzuw_langu,$/;"	e	enum:Tkons_
 T_virtlieskonfein	./kons.h	/^	T_virtlieskonfein,$/;"	e	enum:Tkons_
 T_virtmacherkl_Tx_lgn	./dicom.h	/^	T_virtmacherkl_Tx_lgn,$/;"	e	enum:T_
 T_virtpruefweiteres	./dicom.h	/^	T_virtpruefweiteres,$/;"	e	enum:T_
-T_virtrueckfragen	./dicom.h	/^	T_virtrueckfragen,$/;"	e	enum:T_
 T_virtschlussanzeige	./kons.h	/^	T_virtschlussanzeige,$/;"	e	enum:Tkons_
 T_virttesterg	./dicom.h	/^	T_virttesterg,$/;"	e	enum:T_
 T_virtzeigueberschrift	./dicom.h	/^	T_virtzeigueberschrift, $/;"	e	enum:T_
@@ -530,6 +531,7 @@ Tkons_	./kons.h	/^enum Tkons_ $/;"	g
 TxB	./kons.cpp	/^TxB::TxB(const char* const* const* const *TCp):TCp(TCp)$/;"	f	class:TxB
 TxB	./kons.h	/^class TxB \/\/ Text-Basisklasse$/;"	c
 Txdb_	./DB.h	/^enum Txdb_ $/;"	g
+Txtrf	./kons.h	/^		const string Txtrf;$/;"	m	struct:optcl
 Ubuntu	./kons.h	/^enum distroenum{unbek=-1,Mint,Ubuntu,Debian,Suse,Fedora,Fedoraalt,Mageia,Manjaro};$/;"	e	enum:distroenum
 VOMHAUPTCODE	./dicom.cpp	8;"	d	file:
 VerzeichnisGibts	./kons.cpp	/^uchar VerzeichnisGibts(const char* vname)$/;"	f
@@ -698,7 +700,6 @@ drot	./kons.cpp	/^const char *const schwarz="\\e[0m", *const dgrau="\\e[1;30m", 
 druckeein	./DB.cpp	/^void sqlft::druckeein(DBSTyp eDBS, tm* const zt) $/;"	f	class:sqlft
 dsclear	./DB.cpp	/^void RS::dsclear()$/;"	f	class:RS
 dst	./kons.h	/^    struct stat dst={0};$/;"	m	struct:elem2	typeref:struct:elem2::stat
-duser	./dicom.h	/^		string duser; \/\/ ="sturm";$/;"	m	class:hhcl
 dvb	./DB.h	/^    char dvb; \/\/ delimiter value begin$/;"	m	class:DB
 dvb	./DB.h	/^inline const char dvb(DBSTyp DBS)$/;"	f
 dve	./DB.h	/^    char dve; \/\/ delimiter value end$/;"	m	class:DB
@@ -717,7 +718,7 @@ elem2	./kons.h	/^    elem2(){};$/;"	f	struct:elem2
 elem2	./kons.h	/^struct elem2$/;"	s
 elem3	./kons.h	/^    elem3(string pfad, const struct stat *sbp, int& tflag, const struct FTW *ftwp, string lnk,const struct stat& lst):$/;"	f	struct:elem3
 elem3	./kons.h	/^struct elem3$/;"	s
-elemzahl	./kons.h	498;"	d
+elemzahl	./kons.h	500;"	d
 elemzahlT	./kons.h	/^template<typename T> size_t elemzahlT(T& v){return sizeof(v)\/sizeof(*v);}$/;"	f
 enableggf	./kons.cpp	/^int servc::enableggf(int obverb\/*=0*\/,int oblog\/*=0*\/)$/;"	f	class:servc
 ename	./kons.h	/^    string sname,ename; \/\/ Dienstname, Exename$/;"	m	class:servc
@@ -782,6 +783,8 @@ findfile	./kons.cpp	/^void findfile(svec *qrueckp,uchar findv,int obverb\/*=0*\/
 flags	./kons.h	/^    int flags = 0;$/;"	m	struct:find3cl
 fmt	./kons.h	/^		const char* const fmt;$/;"	m	class:ztacl
 fname	./kons.h	/^	string fname; \/\/ Dateiname$/;"	m	struct:confdcl
+fnhcliztyp	./kons.h	/^typedef int (hcl::*fnhcliztyp)();$/;"	t
+fnhclztyp	./kons.h	/^typedef void (hcl::*fnhclztyp)();$/;"	t
 fnr	./DB.h	/^    unsigned int fnr;$/;"	m	class:RS
 folge	./kons.h	/^    int folge=0;$/;"	m	struct:find3cl
 folgep	./kons.cpp	/^int *find3cl::folgep;$/;"	m	class:find3cl	file:
@@ -992,7 +995,8 @@ obauto	./DB.h	/^    bool obauto;$/;"	m	struct:Feld
 obenabled	./kons.h	/^		int obenabled=0;$/;"	m	class:servc
 oberreicht	./kons.cpp	/^int perfcl::oberreicht(unsigned long sek)$/;"	f	class:perfcl
 obfehlt	./kons.cpp	/^int linst_cl::obfehlt(const string& prog,int obverb,int oblog)$/;"	f	class:linst_cl
-obfstream	./kons.h	1051;"	d
+obfragz	./kons.h	/^		const uchar* obfragz; \/\/ Zeiger auf Variable, die ggf. mit 1 bezeichnet, dass Option in rueckfragen abgefragt werden soll;$/;"	m	struct:optcl
+obfstream	./kons.h	1061;"	d
 obgelesen	./kons.h	/^	uchar obgelesen;$/;"	m	struct:confdcl
 obhilfe	./kons.h	/^    uchar obhilfe=0;      \/\/ Hilfe anzeigen: 1=kurze Hilfe, 2=lange Hilfe, 3=Standardhilfe$/;"	m	class:hcl
 obind	./DB.h	/^    bool obind;$/;"	m	struct:Feld
@@ -1117,8 +1121,8 @@ pvirtVorgbSpeziell	./DB.cpp	/^void dhcl::pvirtVorgbSpeziell()$/;"	f	class:dhcl
 pvirtVorgbSpeziell	./dicom.cpp	/^void hhcl::pvirtVorgbSpeziell()$/;"	f	class:hhcl
 pvirtfuehraus	./dicom.cpp	/^void hhcl::pvirtfuehraus() \/\/α$/;"	f	class:hhcl
 pvirtmacherkl	./dicom.cpp	/^void hhcl::pvirtmacherkl()$/;"	f	class:hhcl
+pvirtnachrueckfragen	./dicom.cpp	/^void hhcl::pvirtnachrueckfragen() \/\/ pvirtvorpruefggfmehrfach()$/;"	f	class:hhcl
 pvirtnachvi	./dicom.cpp	/^void hhcl::pvirtnachvi()$/;"	f	class:hhcl
-pvirtvorpruefggfmehrfach	./dicom.cpp	/^void hhcl::pvirtvorpruefggfmehrfach()$/;"	f	class:hhcl
 pvirtvorrueckfragen	./dicom.cpp	/^void hhcl::pvirtvorrueckfragen()$/;"	f	class:hhcl
 pvirtvorzaehler	./dicom.cpp	/^void hhcl::pvirtvorzaehler()$/;"	f	class:hhcl
 pzuweis	./kons.cpp	/^int optcl::pzuweis(const char *const nacstr, const uchar vgegenteil\/*=0*\/, const uchar vnichtspeichern\/*=0*\/)$/;"	f	class:optcl
@@ -1145,6 +1149,7 @@ rowformat	./DB.h	/^	const string rowformat;$/;"	m	struct:Tabelle
 rsp	./DB.h	/^	RS *rsp;$/;"	m	struct:insv
 rtrim	./kons.h	/^inline std::string *rtrim(std::string *str) {$/;"	f	class:std
 rtrim	./kons.h	/^inline void rtrim(char* str,size_t size) {$/;"	f
+rueckfragen	./kons.cpp	/^void hcl::rueckfragen()$/;"	f	class:hcl
 rufpruefsamba	./dicom.cpp	/^void hhcl::rufpruefsamba()$/;"	f	class:hhcl
 rzf	./kons.h	/^    uchar rzf=0; \/\/ rueckzufragen$/;"	m	class:hcl
 sb	./kons.h	/^    const struct stat sb={0};$/;"	m	struct:elem3	typeref:struct:elem3::stat
@@ -1175,6 +1180,7 @@ setz_gitv	./Makefile	/^define setz_gitv$/;"	m
 setzbemerkwoher	./kons.cpp	/^template<typename SCL> void schAcl<SCL>::setzbemerkwoher(SCL *optp,const string& ibemerk,const uchar vwoher)$/;"	f	class:schAcl
 setzbemv	./kons.cpp	/^template<typename SCL> void schAcl<SCL>::setzbemv(const string& pname,TxB *TxBp,size_t Tind,uchar obfarbe,svec *fertige)$/;"	f	class:schAcl
 setzbenutzer	./kons.cpp	/^void hcl::setzbenutzer(string *const user)$/;"	f	class:hcl
+setzlog	./dicom.cpp	/^void hhcl::setzlog()$/;"	f	class:hhcl
 setzlog	./kons.cpp	/^void hcl::setzlog()$/;"	f	class:hcl
 setzrpw	./DB.cpp	/^void DB::setzrpw(int obverb\/*=0*\/,int oblog\/*=0*\/) \/\/ Setze root-password$/;"	f	class:DB
 setzstr	./kons.cpp	/^int WPcl::setzstr(const char* const neuw,uchar *const obzuschreib\/*=0*\/,const uchar ausDatei\/*=0*\/)$/;"	f	class:WPcl
@@ -1262,6 +1268,7 @@ tuerkis	./kons.cpp	/^      *const tuerkis="\\e[0;36m", *const htuerkis="\\e[1;36
 tuerkis	./kons.cpp	/^const char *const drot="", *const rot="", *const schwarz="", *const blau="", *const gelb="", *const tuerkis="", *const hgrau="";$/;"	v
 tuerweitern	./DB.cpp	/^uchar DB::tuerweitern(const string& tabs, const string& feld,long wlength,const size_t aktc,int obverb) const$/;"	f	class:DB
 tuloeschen	./kons.cpp	/^int tuloeschen(const string& zuloe,const string& cuser\/*=string()*\/, int obverb\/*=0*\/, int oblog\/*=0*\/,stringstream *ausgp\/*=0*\/)$/;"	f
+turueckfrage	./kons.cpp	/^void hcl::turueckfrage(shared_ptr<optcl>& omit)$/;"	f	class:hcl
 tusetzstr	./kons.cpp	/^int wpgcl::tusetzstr(const char* const neuw,uchar *const tuschreibp,const uchar ausDatei\/*=0*\/,const uchar keineprio\/*=0*\/)$/;"	f	class:wpgcl
 tuzeigspalte	./DB.cpp	/^void Tabelle::tuzeigspalte(size_t spnr,int obverb\/*=0*\/,int oblog\/*=0*\/)$/;"	f	class:Tabelle
 typ	./DB.h	/^    const string typ;$/;"	m	struct:Feld
@@ -1274,7 +1281,7 @@ uchar	./DB.h	/^typedef unsigned char	uchar;	\/* Short for unsigned char *\/$/;"	
 uchar	./kons.h	/^typedef unsigned char uchar; \/\/ 1 Byte$/;"	t
 udpr	./kons.h	/^ string udpr;   \/\/ Befehl zum direkten Deinstallieren$/;"	m	struct:linst_cl
 uebers	./kons.h	/^		stringstream uebers; \/\/ Ueberschrift fuer Verarbeitungslauf$/;"	m	class:hcl
-uebersichtlich	./kons.cpp	5666;"	d	file:
+uebersichtlich	./kons.cpp	5733;"	d	file:
 ull	./kons.h	/^typedef unsigned long long ull;$/;"	t
 umgek	./kons.cpp	/^      *const tuerkis="\\e[0;36m", *const htuerkis="\\e[1;36m", *const hgrau="\\e[0;37m", *const weiss="\\e[1;37m", *const umgek="\\e[7m";$/;"	v
 unbek	./kons.h	/^enum distroenum{unbek=-1,Mint,Ubuntu,Debian,Suse,Fedora,Fedoraalt,Mageia,Manjaro};$/;"	e	enum:distroenum
@@ -1289,7 +1296,7 @@ user	./DB.h	/^    const string user;$/;"	m	class:DB
 usr_lib64_vz	./kons.h	/^		string usr_lib64_vz;$/;"	m	class:lsyscl
 usys	./kons.h	/^enum lsysen:uchar {usys,sus,deb,fed};$/;"	e	enum:lsysen
 uypr	./kons.h	/^ string uypr;   \/\/ Befehl zum Deinstallieren ueber das Installationssystem ohne Rueckfrage$/;"	m	struct:linst_cl
-vagenau	./kons.cpp	1387;"	d	file:
+vagenau	./kons.cpp	1391;"	d	file:
 vector_incl	./kons.h	32;"	d
 verarbeit	./kons.cpp	/^int find3cl::verarbeit(const char *fpath, const struct stat *sb, int tflag, struct FTW *ftwbuf)$/;"	f	class:find3cl
 verarbeitkonf	./kons.cpp	/^void hcl::verarbeitkonf()$/;"	f	class:hcl
@@ -1328,9 +1335,7 @@ virtoausgeb	./kons.cpp	/^void optcl::virtoausgeb() const$/;"	f	class:optcl
 virtoausgeb	./kons.cpp	/^void wpgcl::virtoausgeb() const$/;"	f	class:wpgcl
 virtpruefweiteres	./dicom.cpp	/^void hhcl::virtpruefweiteres()$/;"	f	class:hhcl
 virtpruefweiteres	./kons.cpp	/^void hcl::virtpruefweiteres()$/;"	f	class:hcl
-virtrueckfragen	./DB.cpp	/^void dhcl::virtrueckfragen()$/;"	f	class:dhcl
-virtrueckfragen	./dicom.cpp	/^void hhcl::virtrueckfragen()$/;"	f	class:hhcl
-virtrueckfragen	./kons.cpp	/^void hcl::virtrueckfragen()$/;"	f	class:hcl
+virtrueckfrage	./kons.cpp	/^void hcl::virtrueckfrage(shared_ptr<optcl>& omit)$/;"	f	class:hcl
 virtschlussanzeige	./DB.cpp	/^void dhcl::virtschlussanzeige()$/;"	f	class:dhcl
 virtschlussanzeige	./dicom.cpp	/^void hhcl::virtschlussanzeige()$/;"	f	class:hhcl
 virtschlussanzeige	./kons.cpp	/^void hcl::virtschlussanzeige()$/;"	f	class:hcl

@@ -48,8 +48,6 @@ char const *DPROG_T[T_MAX+1][SprachZahl]=
 	{"virtMusterVorgb()","virtsampleprefs"},
 	// T_pvirtvorrueckfragen
 	{"pvirtvorrueckfragen()","pvirtbeforecallbacks()"},
-	// T_virtrueckfragen
-	{"virtrueckfragen()","virtcallbacks()"},
 	// T_virtpruefweiteres
 	{"virtpruefweiteres()","virtcheckmore()"},
 	// T_virtmacherkl_Tx_lgn
@@ -76,8 +74,8 @@ char const *DPROG_T[T_MAX+1][SprachZahl]=
 	{"Zahl der aufzulistenden Datensaetze = <zahl> statt","No. of listed entries = <no> instead of"},
 	// T_Datenbank_nicht_initialisierbar_breche_ab
 	{"Datenbank nicht initialisierbar, breche ab","database init failed, stopping"},
-	// T_pvirtvorpruefggfmehrfach,
-	{"pvirtvorpruefggfmehrfach()","pvirtbeforecheckmultiple()"},
+	// T_pvirtnachrueckfragen,
+	{"pvirtnachrueckfragen()","pvirtaftercallbacks()"},
 	// T_pvirtfuehraus,
 	{"pvirtfuehraus()","pvirtexecute()"},
 	// T_in_pvirtfuehraus_pidw,
@@ -253,12 +251,12 @@ void hhcl::virtinitopt()
 	hLog(violetts+"virtinitopt()"+schwarz); //ω
 	opn<<new optcl(/*pptr*/&anhl,/*art*/puchar,T_st_k,T_stop_l,/*TxBp*/&Tx,/*Txi*/T_DPROG_anhalten,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/1); //α //ω
 	opn<<new optcl(/*pptr*/&dszahl,/*art*/pdez,T_n_k,T_dszahl_l,/*TxBp*/&Tx,/*Txi*/T_Zahl_der_aufzulistenden_Datensaetze_ist_zahl_statt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/1); //α //ω
-	opn<<new optcl(/*pname*/"duser",/*pptr*/&duser,/*art*/pstri,T_duser_k,T_duser_l,/*TxBp*/&Tx, /*Txi*/T_verwendet_fuer_Samba_den_Linux_Benutzer_string_anstatt,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!duser.empty(),T_verwendet_fuer_Samba_den_Linux_Benutzer_string_anstatt);
+	opn<<new optcl(/*pname*/"duser",/*pptr*/&duser,/*art*/pstri,T_duser_k,T_duser_l,/*TxBp*/&Tx, /*Txi*/T_verwendet_fuer_Samba_den_Linux_Benutzer_string_anstatt,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!duser.empty());
 	opn<<new optcl(/*pptr*/&obrueck,/*art*/puchar,T_rueck_k,T_rueck_l,/*TxBp*/&Tx, /*Txi*/T_letzten_Import_rueckgaengig, /*wi*/1, /*Txi2*/-1,/*rottxt*/string(),/*wert*/-1,/*woher*/1);
-	opn<<new optcl(/*pname*/"qvz",/*pptr*/&qvz,/*art*/pverz,T_qvz_k,T_qvz_l,/*TxBp*/&Tx,/*Txi*/T_Quellverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!qvz.empty(),T_Quellverzeichnis_anstatt);
-	opn<<new optcl(/*pname*/"avz",/*pptr*/&avz,/*art*/pverz,T_avz_k,T_avz_l,/*TxBp*/&Tx,/*Txi*/T_Archivverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!avz.empty(),T_Archivverzeichnis_anstatt);
-	opn<<new optcl(/*pname*/"zvz",/*pptr*/&zvz,/*art*/pverz,T_zvz_k,T_zvz_l,/*TxBp*/&Tx,/*Txi*/T_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!zvz.empty(),T_Zielverzeichnis_anstatt);
-	opn<<new optcl(/*pname*/"z2vz",/*pptr*/&z2vz,/*art*/pverz,T_z2vz_k,T_z2vz_l,/*TxBp*/&Tx,/*Txi*/T_Zweites_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!z2vz.empty(),T_Zweites_Zielverzeichnis_anstatt);
+	opn<<new optcl(/*pname*/"qvz",/*pptr*/&qvz,/*art*/pverz,T_qvz_k,T_qvz_l,/*TxBp*/&Tx,/*Txi*/T_Quellverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!qvz.empty());
+	opn<<new optcl(/*pname*/"avz",/*pptr*/&avz,/*art*/pverz,T_avz_k,T_avz_l,/*TxBp*/&Tx,/*Txi*/T_Archivverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!avz.empty());
+	opn<<new optcl(/*pname*/"zvz",/*pptr*/&zvz,/*art*/pverz,T_zvz_k,T_zvz_l,/*TxBp*/&Tx,/*Txi*/T_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!zvz.empty());
+	opn<<new optcl(/*pname*/"z2vz",/*pptr*/&z2vz,/*art*/pverz,T_z2vz_k,T_z2vz_l,/*TxBp*/&Tx,/*Txi*/T_Zweites_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!z2vz.empty());
 	dhcl::virtinitopt(); //α
 } // void hhcl::virtinitopt
 
@@ -303,59 +301,13 @@ void hhcl::neurf()
 {
 	for(auto omit=opn.schl.end();omit!=opn.schl.begin();) {
 		omit--;
-		if ((*omit)->Txrf!=-1) {
-		 const char* const text=(*(*omit)->TxBp)[(*omit)->Txrf];
+		if (!(*omit)->Txtrf.empty()) {
+		 const char* const text=(*omit)->Txtrf.c_str();
 		cout<<text<<endl;
 		}
 	}
 } // void hhcl::neurf
  //ω
-// aufgerufen in lauf //α
-void hhcl::virtrueckfragen()
-{
-	hLog(violetts+Tx[T_virtrueckfragen]+", rzf: "+blau+ltoan(rzf)+schwarz);
-	if (rzf) { //ω
-		for(auto omit=opn.schl.begin();omit!=opn.schl.end();omit++) {
-			if (!(*omit)->pname.empty()) {
-				string pwd2;
-				switch ((*omit)->part) {
-					case pint:
-					case plong:
-						(*(string*)(*omit)->pptr)=Tippzahl((*(*omit)->TxBp)[(*omit)->Txi],*(long*)(*omit)->pptr);
-						caus<<*(string*)(*omit)->pptr<<endl;
-						break;
-					case pverz:
-						(*(string*)(*omit)->pptr)=Tippverz((*(*omit)->TxBp)[(*omit)->Txi],(string*)(*omit)->pptr);
-						break;
-					case pdez:
-						(*(string*)(*omit)->pptr)=Tippzahl((*(*omit)->TxBp)[(*omit)->Txi],((string*)(*omit)->pptr)->c_str());
-						caus<<*(string*)(*omit)->pptr<<endl;
-						break;
-					case ppwd:
-						(*(string*)(*omit)->pptr).clear();
-						do {
-							(*(string*)(*omit)->pptr)=Tippstr(string((*(*omit)->TxBp)[(*omit)->Txi])+Txk[T_fuer_Benutzer]+dblau+*(*omit)->refstr+schwarz+"'"/*,&(*(string*)(*omit)->pptr)*/);
-							pwd2=Tippstr(string((*(*omit)->TxBp)[(*omit)->Txi])+Txk[T_fuer_Benutzer]+dblau+*(*omit)->refstr+schwarz+"'"+" ("+Txk[T_erneute_Eingabe]+")"/*,&pwd2*/);
-						} while ((*(string*)(*omit)->pptr)!=pwd2);
-						break;
-					case pstri:
-					case pfile:
-						(*(string*)(*omit)->pptr)=Tippstr((*(*omit)->TxBp)[(*omit)->Txi],(string*)(*omit)->pptr);
-						caus<<*(string*)(*omit)->pptr<<endl;
-						break;
-					case puchar:
-					case pdat:
-					case pbin:
-						break;
-				}
-			}
-		}
-	} // if (rzf) //α
-//	dhcl::virtrueckfragen();
-//	hcl::virtrueckfragen();
-	//// opn.oausgeb(rot);
-} // void hhcl::virtrueckfragen
-//ω
 //α
 // aufgerufen in lauf
 void hhcl::virtpruefweiteres()
@@ -398,11 +350,11 @@ void hhcl::pvirtnachvi()
 } //α
 
 // aufgerufen in lauf
-void hhcl::pvirtvorpruefggfmehrfach()
+void hhcl::pvirtnachrueckfragen() // pvirtvorpruefggfmehrfach()
 {
-	hLog(violetts+Tx[T_pvirtvorpruefggfmehrfach]+schwarz);
+	hLog(violetts+Tx[T_pvirtnachrueckfragen]+schwarz);
 	// if (initDB()) exit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab]));  //ω
-} // void hhcl::pvirtvorpruefggfmehrfach //α
+} // void hhcl::pvirtnachrueckfragen //α
 //ω
 void hhcl::pvirtfuehraus() //α
 { 
