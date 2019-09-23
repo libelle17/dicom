@@ -145,7 +145,7 @@ char const *DPROG_T[T_MAX+1][SprachZahl]=
 	// T_Optionen_die_nicht_gespeichert_werden
 	// T_jahr
 	{"<jahr>","<year>"},
-	// T_schonda
+	// T_in_Datenbank_schonda
 	{"schon da: ","already here: "},
 	// T_schon_da
 	{" schon da!"," already here!"},
@@ -560,8 +560,8 @@ constexpr const unsigned datcl::pnnr, datcl::itnr, datcl::rpnr, datcl::tdnr, dat
 
 ulong datcl::inDB(hhcl& pm,const int& aktc)
 {
-	ulong zl=0;
-	systemrueck("dcmdump '"+name+"' 2>/dev/null",pm.obverb,pm.oblog,&ir);
+	ulong zl{0};
+	systemrueck("dcmdump +U8 '"+name+"' 2>/dev/null",pm.obverb,pm.oblog,&ir);
 	string erg[dim];
 	gibaus=0;
 	int fehltzahl=dim;
@@ -603,7 +603,7 @@ ulong datcl::inDB(hhcl& pm,const int& aktc)
 		} // 		if (j==pnnr || j==pfnr)
 	} // 	for(unsigned j=0;j<dim;j++)
 	einf.push_back(instyp(pm.My->DBS,"PatientName",&ord[pnnr]));
-	struct tm tmg={0};
+	struct tm tmg{0};
 	strptime(ord[1].c_str(),"%Y%m%d",&tmg);
 	einf.push_back(instyp(pm.My->DBS,"Geburtsdatum",&tmg));
 	einf.push_back(instyp(pm.My->DBS,"PatientID",&ord[2]));
@@ -644,11 +644,11 @@ ulong datcl::inDB(hhcl& pm,const int& aktc)
 	eindfeld<<"PatientID";
 	eindfeld<<"Aufnahmedatum";
 	eindfeld<<"MediaStorageSOPInstanceUID";
-	int ZDB=(pm.obverb?pm.obverb-1:0);
+	const int ZDB{(pm.obverb?pm.obverb-1:0)};
 	zl=rins.tbins(&einf,aktc,/*sammeln=*/0,/*obverb=*/ZDB,&id,/*eindeutig=*/0,eindfeld);
 	pm.dbz+=zl;
 	if (!zl) { 
-		fLog(Tx[T_schonda]+blaus+ord[pnnr]+", "+ord[uidnr]+schwarz,1,pm.oblog);
+		fLog(Tx[T_in_Datenbank_schonda]+blaus+ord[pnnr]+", "+ord[uidnr]+schwarz,1,pm.oblog);
 	}
 	fLog("ID: '"+violetts+id+schwarz+"', affected rows: "+violett+ltoan(zl)+schwarz,pm.obverb,pm.oblog);
 	return zl;
@@ -689,14 +689,14 @@ void datcl::aufPlatte(hhcl& pm,const size_t& aktc,const size_t& nr)
 			}
 			// hier dcmt installieren
 		} // 		for(int iru=0;iru<2;iru++)
-		struct stat nst={0};
+		struct stat nst{0};
 		if (!lstat(neuname.c_str(),&nst)) {
-			fLog(blaus+ltoan(nr)+schwarz+") "+Tx[T_Erstellt]+blaus+neuname+schwarz,1,pm.oblog);
+			fLog(blaus+ltoan(nr+1)+schwarz+") "+Tx[T_Erstellt]+blaus+neuname+schwarz,1,pm.oblog);
 			pm.umz++;
-			const string jahr=ord[adnr].substr(0,4);
+			const string jahr{ord[adnr].substr(0,4)};
 			tma.tm_isdst=-1;
-			time_t modz=mktime(&tma);
-			struct utimbuf ub={0};
+			const time_t modz{mktime(&tma)};
+			struct utimbuf ub{0};
 			ub.modtime=modz;
 			ub.actime=modz;
 			if (utime(neuname.c_str(),&ub)) {
@@ -706,9 +706,9 @@ void datcl::aufPlatte(hhcl& pm,const size_t& aktc,const size_t& nr)
 			gid_t dgid;
 			untersuser(pm.duser,&duid,&dgid);
 			systemrueck("chown "+pm.duser+":"+ltoan(dgid)+" '"+neuname+"'",pm.obverb,pm.oblog);
-			const string z2vzj=pm.z2vz+vtz+jahr;
+			const string z2vzj{pm.z2vz+vtz+jahr};
 			if (!pruefverz(z2vzj,pm.obverb,pm.oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/pm.duser,/*benutzer=*/pm.duser,/*obmachen=*/1)) {
-				const string cmd="cp -a '"+neuname+"' '"+z2vzj+"'";
+				const string cmd{"cp -a '"+neuname+"' '"+z2vzj+"'"};
 				pm.u2z+=!systemrueck(cmd,pm.obverb,pm.oblog);
 			} // 			if (!pruefverz(z2vzj,obverb,oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/duser,/*benutzer=*/duser,/*obmachen=*/1))
 		} else {

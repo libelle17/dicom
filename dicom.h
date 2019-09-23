@@ -69,7 +69,7 @@ enum T_
 	T_und,
 	T_und_verschiebt_zuletzt_die_Orignale_nach,
 	T_jahr,
-	T_schonda,
+	T_in_Datenbank_schonda,
 	T_schon_da,
 	T_Erstellt,
 	T_Fehler_beim_Datumsetzen_von,
