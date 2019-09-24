@@ -1,11 +1,13 @@
 .br
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicomneu/dicom\fR, V: \fB0.10172 \fR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10192 \fR
 .br
 \fBOptionen, die nicht gespeichert werden (aktueller Wert in Klammern): \fR
 .br
 \fB -st, --stop\fR: dicom anhalten (\fB0\fR)
 .br
 \fB -n, --dszahl <string>\fR: Zahl der aufzulistenden Datensaetze = <zahl> statt ('\fB30\fR')
+.br
+\fB -ra, --richtalte\fR: alte, nicht bearbeitete nachholen (\fB0\fR)
 .br
 \fB -rueck, --rueck\fR: letzten Import rückgängig machen (\fB0\fR)
 .br

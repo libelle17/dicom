@@ -60,6 +60,12 @@ char const *DPROG_T[T_MAX+1][SprachZahl]=
 	{"stop","stop"},
 	// T_DPROG_anhalten
 	{DPROG " anhalten","stop " DPROG},
+	// T_ra_k,
+	{"ra","co"},
+	// T_richtalte_l,
+	{"richtalte","correctold"},
+	// T_alte_nicht_bearbeitete_nachholen,
+	{"alte, nicht bearbeitete nachholen","catch up old, not edited"},
 	// T_anhalten
 	{"anhalten()","stop()"},
 	// T_Cron_Aufruf_von
@@ -300,6 +306,7 @@ void hhcl::virtinitopt()
 	// opn<<new optcl(/*pname*/"pname",/*pptr*/pptr,/*art*/pstri,/*kurzi*/T_kurz_k,/*langi*/T_lang_l,/*TxBp*/&Tx,/*Txi*/T_Option_erklaert,/*wi*/1,/*Txi2*/T_Option_Nachtext,/*rottxt*/nix,/*wert*/1,/*woher*/!pname.empty(),/*Txtrf*/{},/*obno*/1,/*refstr*/0,/*obfragz*/0,/*fnobfragz*/0,/*fnnachhz*/&hcl::fu1,/*fnvorhz*/0,/*sonderrf*/0,/*fngueltigz*/0)
 	opn<<new optcl(/*pptr*/&anhl,/*art*/puchar,T_st_k,T_stop_l,/*TxBp*/&Tx,/*Txi*/T_DPROG_anhalten,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/1); //α //ω
 	opn<<new optcl(/*pptr*/&dszahl,/*art*/pdez,T_n_k,T_dszahl_l,/*TxBp*/&Tx,/*Txi*/T_Zahl_der_aufzulistenden_Datensaetze_ist_zahl_statt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/1); //α //ω
+	opn<<new optcl(/*pptr*/&richtalte,/*art*/puchar,T_ra_k,T_richtalte_l,/*TxBp*/&Tx,/*Txi*/T_alte_nicht_bearbeitete_nachholen,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/1); //α //ω
 	opn<<new optcl(/*pname*/"duser",/*pptr*/&duser,/*art*/pstri,T_duser_k,T_duser_l,/*TxBp*/&Tx, /*Txi*/T_verwendet_fuer_Samba_den_Linux_Benutzer_string_anstatt,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!duser.empty());
 	opn<<new optcl(/*pptr*/&obrueck,/*art*/puchar,T_rueck_k,T_rueck_l,/*TxBp*/&Tx, /*Txi*/T_letzten_Import_rueckgaengig, /*wi*/1, /*Txi2*/-1,/*rottxt*/string(),/*wert*/-1,/*woher*/1);
 	opn<<new optcl(/*pname*/"qvz",/*pptr*/&qvz,/*art*/pverz,T_qvz_k,T_qvz_l,/*TxBp*/&Tx,/*Txi*/T_Quellverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!qvz.empty());
@@ -429,9 +436,12 @@ void hhcl::pvirtfuehraus() //α
 		exit(dorueck(aktc));
 	machimpvz();
 	svec rueck;
-	systemrueck("find "+qvz+" -type f -not -path '*\\.*' -not -path '*DICOMDIR*'",obverb,oblog,&rueck);
+	const string* suchvz{richtalte?&avz:&qvz};
+	// sonst Fehler zu viele offene Dateien
+	cmd="find "+*suchvz+" -type f -not -path '*\\.*' -newermt '20190711' -not -newermt '20191111' -not -path '*DICOMDIR*'";
+	systemrueck(cmd,obverb,oblog,&rueck);
 	if (!rueck.size()) {
-	 fLog(rots+Tx[T_Keine_Dateien_in]+blau+qvz+rot+Tx[T_Gefunden]+schwarz,1,0);
+	 fLog(rots+Tx[T_Keine_Dateien_in]+blau+*suchvz+rot+Tx[T_Gefunden]+schwarz,1,0);
 	 pfehler=1;
 	} else {
 		pruefimpvz();
@@ -443,7 +453,7 @@ void hhcl::pvirtfuehraus() //α
 				dat.aufPlatte(*this,aktc,nr);
 			}
 		} // 	for(size_t nr=0;nr<rueck.size();nr++)
-		verschieb();
+		if (!richtalte) verschieb();
 	} // 	if (!rueck.size())
 } // void hhcl::pvirtfuehraus  //α
 
@@ -455,7 +465,9 @@ void hhcl::virtschlussanzeige()
 	fLog(blaus+ltoan(dbz,10,0,5)+schwarz+Tx[T_Datensaetze_in_Tabelle]+blau+tbn+schwarz+Tx[T_in_Datenbank]+blau+dbq+schwarz+Tx[T_eingetragen],1,1);
 	fLog(blaus+ltoan(umz,10,0,5)+schwarz+Tx[T_Dateien_in_Verzeichnis]+blau+zvz+schwarz+Tx[T_erstellt],1,1);
 	fLog(blaus+ltoan(u2z,10,0,5)+schwarz+Tx[T_Dateien_in_Verzeichnis]+blau+z2vz+vtz+Tx[T_jahr]+schwarz+Tx[T_kopiert],1,1);
-	fLog(blaus+(pfehler?Tx[T_Keine]:Tx[T_Alle])+schwarz+Tx[T_Dateien_von]+blau+qvz+schwarz+Tx[T_nach_]+blau+avz+vtz+impvz+schwarz+Tx[T_verschoben],1,1);
+	if (!richtalte) {
+		fLog(blaus+(pfehler?Tx[T_Keine]:Tx[T_Alle])+schwarz+Tx[T_Dateien_von]+blau+qvz+schwarz+Tx[T_nach_]+blau+avz+vtz+impvz+schwarz+Tx[T_verschoben],1,1);
+	}
 	dhcl::virtschlussanzeige(); //α
 } // void hhcl::virtschlussanzeige
 
@@ -655,7 +667,7 @@ ulong datcl::inDB(hhcl& pm,const int& aktc)
 } // void datcl::inDB
 
 
-datcl::datcl(string& name): name(name)
+datcl::datcl(string& name,int obverb/*=0*/): obverb(obverb),name(name)
 {
 }
 

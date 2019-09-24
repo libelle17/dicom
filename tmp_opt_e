@@ -1,11 +1,13 @@
 .br
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicomneu/dicom\fR, V: \fB0.10172 \fR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10192 \fR
 .br
 \fBOptions which are not saved (current value in parentheses): \fR
 .br
 \fB -st, --stop\fR: stop dicom (\fB0\fR)
 .br
 \fB -n, --reccount <string>\fR: No. of listed entries = <no> instead of ('\fB30\fR')
+.br
+\fB -co, --correctold\fR: catch up old, not edited (\fB0\fR)
 .br
 \fB -back, --back\fR: revert last import (\fB0\fR)
 .br
@@ -42,6 +44,8 @@
 \fB -duser, --duser <string>\fR: takes the linux user <string> for samba instead of ('\fBsturm\fR')
 .br
 \fB -sdr, --sourcedir <path>\fR: source directory instead of  ('\fB/var/spool/dicomneu\fR')
+.br
+\fB -adr, --archdir <path>\fR: archive directory instead of  ('\fB/var/spool/dicomalt\fR')
 .br
 \fB -tdr, --targetdir <path>\fR: target directory instead of  ('\fB/var/spool/dicomziel\fR')
 .br

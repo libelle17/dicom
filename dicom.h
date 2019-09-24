@@ -27,6 +27,9 @@ enum T_
 	T_st_k,
 	T_stop_l,
 	T_DPROG_anhalten,
+	T_ra_k,
+	T_richtalte_l,
+	T_alte_nicht_bearbeitete_nachholen,
 	T_anhalten,
 	T_Cron_Aufruf_von,
 	T_gestoppt,
@@ -99,6 +102,7 @@ class hhcl:public dhcl
 	private: 
 		svec fbip; // Fritzbox-IP
 		uchar anhl{0};    // <DPROG> anhalten
+		uchar richtalte{0};    // <DPROG> anhalten
 		string dszahl{"30"}; // Datensatzzahl fuer Tabellenausgaben
 		//ω
 		string qvz; // Quellverzeichnis // ="/DATA/Patientendokumente/HDneu";
@@ -172,6 +176,7 @@ class datcl
 		static constexpr const unsigned pnnr{0}, itnr{4}, rpnr{5}, tdnr{7}, pfnr{8}, uidnr{9}, adnr{10};
 		string id; // Rueckgabe: ID
 		svec ir;
+		int obverb;
 	public:
 		string name;
 		uchar gibaus;
@@ -181,6 +186,6 @@ class datcl
 	public:
 		ulong inDB(hhcl& pm, const int& aktc);
 		void aufPlatte(hhcl& pm,const size_t& aktc,const size_t& nr);
-		datcl(string& name);
+		datcl(string& name,int obverb=0);
 };
 
