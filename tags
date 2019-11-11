@@ -265,6 +265,7 @@ T_aktuelle_Einstellungen_aus	./kons.h	/^	T_aktuelle_Einstellungen_aus,$/;"	e	enu
 T_alle	./kons.h	/^	T_alle,$/;"	e	enum:Tkons_
 T_alle_Parameter_werden_abgefragt_darunter_einige_hier_nicht_gezeigte	./kons.h	/^	T_alle_Parameter_werden_abgefragt_darunter_einige_hier_nicht_gezeigte,$/;"	e	enum:Tkons_
 T_als_Dienst_eingerichtet_von	./kons.h	/^  T_als_Dienst_eingerichtet_von,$/;"	e	enum:Tkons_
+T_alte_nicht_bearbeitete_nachholen	./dicom.h	/^	T_alte_nicht_bearbeitete_nachholen,$/;"	e	enum:T_
 T_am	./kons.h	/^  T_am,$/;"	e	enum:Tkons_
 T_an_Position	./DB.h	/^	T_an_Position,$/;"	e	enum:Txdb_
 T_anhalten	./dicom.h	/^	T_anhalten,$/;"	e	enum:T_
@@ -451,7 +452,9 @@ T_pvirtnachrueckfragen	./dicom.h	/^	T_pvirtnachrueckfragen,$/;"	e	enum:T_
 T_pvirtvorrueckfragen	./dicom.h	/^	T_pvirtvorrueckfragen,$/;"	e	enum:T_
 T_qvz_k	./dicom.h	/^	T_qvz_k,$/;"	e	enum:T_
 T_qvz_l	./dicom.h	/^	T_qvz_l,$/;"	e	enum:T_
+T_ra_k	./dicom.h	/^	T_ra_k,$/;"	e	enum:T_
 T_rf_k	./kons.h	/^	T_rf_k,$/;"	e	enum:Tkons_
+T_richtalte_l	./dicom.h	/^	T_richtalte_l,$/;"	e	enum:T_
 T_rueck_k	./dicom.h	/^	T_rueck_k,$/;"	e	enum:T_
 T_rueck_l	./dicom.h	/^	T_rueck_l,$/;"	e	enum:T_
 T_rueckfragen	./kons.h	/^	T_rueckfragen,$/;"	e	enum:Tkons_
@@ -680,7 +683,7 @@ cuscl	./kons.h	/^class cuscl$/;"	c
 cusstr	./kons.h	/^		string cusstr;$/;"	m	class:cuscl
 daemon_reload	./kons.cpp	/^void servc::daemon_reload(int obverb\/*=0*\/, int oblog\/*=0*\/)$/;"	f	class:servc
 datadir	./DB.h	/^    string datadir;$/;"	m	class:DB
-datcl	./dicom.cpp	/^datcl::datcl(string& name): name(name)$/;"	f	class:datcl
+datcl	./dicom.cpp	/^datcl::datcl(string& name,int obverb\/*=0*\/): obverb(obverb),name(name)$/;"	f	class:datcl
 datcl	./dicom.h	/^class datcl$/;"	c
 dateivgl	./kons.cpp	/^int dateivgl(const string& d1, const string& d2,uchar obzeit\/*=0*\/)$/;"	f
 db_systemctl_name	./DB.h	/^    string db_systemctl_name; \/\/ mysql, mariadb je nach System$/;"	m	class:DB
@@ -1077,6 +1080,7 @@ obsetz	./kons.h	/^		uchar obsetz=1; \/\/ setzzaehler$/;"	m	class:hcl
 obsotiff	./kons.h	/^		uchar obsotiff=0; \/\/ 1 = tiff wird von der source verwendet$/;"	m	class:hcl
 obsvfeh	./kons.cpp	/^int servc::obsvfeh(int obverb\/*=0*\/,int oblog\/*=0*\/) \/\/ ob service einrichtungs fehler$/;"	f	class:servc
 obtabspda	./DB.cpp	/^uchar DB::obtabspda(const char* const tab,const char* const sp)$/;"	f	class:DB
+obverb	./dicom.h	/^		int obverb;$/;"	m	class:datcl
 obverb	./kons.h	/^		int obverb=0, oblog=0;$/;"	m	struct:find3cl
 obverb	./kons.h	/^		int obverb=0; \/\/ verbose$/;"	m	class:hcl
 obverb	./kons.h	/^	int obverb,oblog;$/;"	m	class:find2cl

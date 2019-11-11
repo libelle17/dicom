@@ -438,7 +438,7 @@ void hhcl::pvirtfuehraus() //α
 	svec rueck;
 	const string* suchvz{richtalte?&avz:&qvz};
 	// sonst Fehler zu viele offene Dateien
-	cmd="find "+*suchvz+" -type f -not -path '*\\.*' -newermt '20190711' -not -newermt '20191111' -not -path '*DICOMDIR*'";
+	cmd="find "+*suchvz+" -type f -not -path '*\\.*' -newermt '20190711' "/*-not -newermt '20191111'*/" -not -path '*DICOMDIR*'";
 	systemrueck(cmd,obverb,oblog,&rueck);
 	if (!rueck.size()) {
 	 fLog(rots+Tx[T_Keine_Dateien_in]+blau+*suchvz+rot+Tx[T_Gefunden]+schwarz,1,0);
