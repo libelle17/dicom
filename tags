@@ -1356,7 +1356,7 @@ uchar	./DB.h	/^typedef unsigned char	uchar;	\/* Short for unsigned char *\/$/;"	
 uchar	./kons.h	/^typedef unsigned char uchar; \/\/ 1 Byte$/;"	t
 udpr	./kons.h	/^ string udpr;   \/\/ Befehl zum direkten Deinstallieren$/;"	m	struct:linst_cl
 uebers	./kons.h	/^		stringstream uebers; \/\/ Ueberschrift fuer Verarbeitungslauf$/;"	m	struct:hcl
-uebersichtlich	./kons.cpp	5758;"	d	file:
+uebersichtlich	./kons.cpp	5761;"	d	file:
 ull	./kons.h	/^typedef unsigned long long ull;$/;"	t
 umgek	./kons.cpp	/^      *const tuerkis="\\e[0;36m", *const htuerkis="\\e[1;36m", *const hgrau="\\e[0;37m", *const weiss="\\e[1;37m", *const umgek="\\e[7m";$/;"	v
 unbek	./kons.h	/^enum distroenum{unbek=-1,Mint,Ubuntu,Debian,Suse,Fedora,Fedoraalt,Mageia,Manjaro};$/;"	e	enum:distroenum
