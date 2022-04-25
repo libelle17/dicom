@@ -6514,7 +6514,7 @@ void hcl::pruefsamba(const vector<const string*>& vzn,const svec& abschni,const 
 	uchar obinst{0}; // ob Samba installiert werden soll bzw. die smb.conf bearbeitet
 	uchar obfw{0}; // ob SuSEfirewall bearbeitet werden soll
 	//// <<violett<<"Stelle 0"<<endl;systemrueck("systemctl -n 0 status 'nmbd'",obverb,oblog,/*rueck=*/0,/*obsudc=*/0);
-	linstp->doggfinst("libwbclient0",obverb,oblog);
+//	linstp->doggfinst("libwbclient0",obverb,oblog); // testweise auskommentiert 25.4.22 G.Schade
 	// bei dieser Initialisierung werden nur die Namen zugewiesen
 	servc smb("smb","smbd");
 	servc smbd("smbd","smbd");
