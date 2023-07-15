@@ -2,7 +2,7 @@
 .\" Manual-Seite für ²DPROG²
 .\" Schreiben Sie an geraldschade@gmx.de, wenn Sie Fehler oder Mängel entdeckt haben
 .pc
-.TH man 1 "25.04.22" "Version 0.10199" "Manual-Seite für ²DPROG²"
+.TH man 1 "15.07.23" "Version 0.102" "Manual-Seite für ²DPROG²"
 .SH NAME
 \fB²DPROG² \- FaxServer-Funktionalität\fR: veranlasst automatischen Faxversand von Dateien, Benennung empfangener Faxe und Protokollierung aller Faxe in einer Datenbank 
 .br
@@ -14,6 +14,81 @@
 .SH GEBRAUCH
 .SH OPTIONEN 
 .SH FUNKTIONSWEISE
+.SH FUNKTIONSWEISE
+.br
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10200 \fR
+.br
+\fBOptionen, die nicht gespeichert werden (aktueller Wert in Klammern): \fR
+.br
+\fB -st, --stop\fR: dicom anhalten (\fB0\fR)
+.br
+\fB -n, --dszahl <string>\fR: Zahl der aufzulistenden Datensaetze = <zahl> statt ('\fB30\fR')
+.br
+\fB -ra, --richtalte\fR: alte, nicht bearbeitete nachholen (\fB0\fR)
+.br
+\fB -rueck, --rueck\fR: letzten Import rückgängig machen (\fB0\fR)
+.br
+\fB -sqlw, --sql-wortreich\fR: Bildschirmausgabe mit SQL-Befehlen (\fB0\fR)
+.br
+\fB -w, --wortreich\fR: Bildschirmausgabe gespraechiger (\fB0\fR)
+.br
+\fB -stu, --stumm\fR: Bildschirmausgabe ganz stumm (\fB0\fR)
+.br
+\fB -ldn, --logdateineu\fR: logdatei vorher loeschen (\fB0\fR)
+.br
+\fB -kd, --konfdatei <string>\fR: verwendet Konfigurationsdatei <string> anstatt ('\fB\fR')
+.br
+\fB -h, --hilfe\fR: Erklaerung haeufiger Optionen (\fB3\fR)
+.br
+\fB -lh, --langhilfe\fR: Erklaerung aller Optionen (\fB3\fR)
+.br
+\fB -vi, --vi\fR: Konfigurationsdatei , Logdatei usw. bearbeiten/sehen (beenden mit ':qa') (\fB0\fR)
+.br
+\fB -zkf, --konfzeig\fR: Konfigurationsdateinamenanzeigen (\fB0\fR)
+.br
+\fB -kschrb, --kschreib\fR: Konfigurationsdatei schreiben (\fB0\fR)
+.br
+\fB -vs, --vs\fR: Quelldateien in \fB/home/schade/dicom\fR bearbeiten/sehen (beenden mit ':qa') (\fB0\fR)
+.br
+\fB -rf, --rueckfragen\fR: alle Parameter werden abgefragt (darunter einige hier nicht gezeigte) (\fB0\fR)
+.br
+\fB -krf, --keinerueckfragen\fR: keine Rueckfragen, z.B. fuer Aufruf aus cron (\fB0\fR)
+.br
+\fB -info, --version\fR: Zeigt die Programmversion an (\fB0\fR)
+.br
+\fBOptionen z.Speich. i.Konfigur'datei (vorausg. '1'=doch nicht speichern, 'no'=Gegenteil, z.B. '-noocra','-1noocri'):\fR
+.br
+\fB -duser, --duser <string>\fR: verwendet fuer Samba den Linux-Benutzer <string> anstatt ('\fBsturm\fR')
+.br
+\fB -qvz, --quellvz <pfad>\fR: Quellverzeichnis anstatt  ('\fB/var/spool/dicomneu\fR')
+.br
+\fB -avz, --archvz <pfad>\fR: Archiverzeichnis anstatt  ('\fB/var/spool/dicomalt\fR')
+.br
+\fB -zvz, --zielvz <pfad>\fR: Zielverzeichnis anstatt  ('\fB/var/spool/dicomziel\fR')
+.br
+\fB -z2vz, --ziel2vz <pfad>\fR: Zweites Zielverzeichnis anstatt  ('\fB/var/spool/dicomziel2\fR')
+.br
+\fB -tb, --tabelle <string>\fR: verwendet die Tabelle <string> anstatt ('\fBdictab\fR')
+.br
+\fB -host, --host <string>\fR: verwendet die Datenbank auf Host <string> anstatt auf ('\fBlocalhost\fR')
+.br
+\fB -muser, --muser <string>\fR: verwendet fuer MySQL/MariaDB den Benutzer <string> anstatt ('\fB\fR')
+.br
+\fB -mpwd, --mpwd <string>\fR: verwendet fuer MySQL/MariaDB das Passwort <string>
+.br
+\fB -db, --datenbank <string>\fR: verwendet die Datenbank <string> anstatt ('\fB\fR')
+.br
+\fB -sp, --sprache <string>\fR: Language/Sprache/Lingue/Lingua [\fBd\fReutsch,\fBe\fRnglisch] ('\fBd\fR')
+.br
+\fB -lvz, --logvz <pfad>\fR: waehlt als Logverzeichnis <pfad>, derzeit ('\fB/var/log\fR')
+.br
+\fB -ld, --logdname <string>\fR: logdatei <string> (im Pfad '\fB/var/log\fR') wird verwendet anstatt ('\fBdicom.log\fR')
+.br
+\fB -l, --log <zahl>\fR: protokolliert ausfuehrlich in Datei '\fB/var/log/dicom.log\fR' (sonst knapper) (\fB0\fR)
+.br
+\fB -cm, --cronminuten <string>\fR: alle wieviel Minuten soll \fBdicom\fR ueber crontab aufgerufen werden (0=gar nicht), anstatt  ('\fB0\fR')
+.br
+\fB -autoakt, --autoaktual <zahl>\fR: Programm automatisch aktualisieren (\fB1\fR)
 .SH FUNKTIONSWEISE
 .br
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10199 \fR
