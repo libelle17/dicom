@@ -437,6 +437,9 @@ void hhcl::pvirtfuehraus() //α
 	machimpvz();
 	svec rueck;
 	const string* suchvz{richtalte?&avz:&qvz};
+	// fuer die von der umgesteckten Platte kopierten Dateien
+	cmd="rename '.DCM' '' "+*suchvz+"/*";
+	systemrueck(cmd,obverb,oblog);
 	// sonst Fehler zu viele offene Dateien
 	cmd="find "+*suchvz+" -type f -not -path '*\\.*' -newermt '20190711' "/*-not -newermt '20191111'*/" -not -path '*DICOMDIR*'";
 	systemrueck(cmd,obverb,oblog,&rueck);
