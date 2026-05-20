@@ -1,9 +1,9 @@
-./Makefile
 ./DB.cpp
 ./DB.h
+./Makefile
 ./kons.h
-./dicom.cpp
+./kons.cpp
 ./configure
 ./dicom.h
-./kons.cpp
+./dicom.cpp
 ./install.sh

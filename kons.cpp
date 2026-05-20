@@ -3227,7 +3227,7 @@ int pruefverz(const string& verz,int obverb/*=0*/,int oblog/*=0*/, uchar obmitfa
 			if (obselinux==-1) 
 				obselinux=obprogda("sestatus",obverb,oblog,/*pfad*/0,keinsu);
 			if (obselinux) {
-				systemrueck("chcon -R -t samba_share_t '"+verz+"'",obverb,oblog,/*rueck=*/0,/*obsudc=*/1);
+				systemrueck("if ! ls -Zd '/DATA/Patientendokumente/HDneu' 2>/dev/null|grep -q 'samba_share_t';chcon -R -t samba_share_t '"+verz+"';fi;",obverb,oblog,/*rueck=*/0,/*obsudc=*/1);
 			}
 		} // 		if (obmitcon)
 	} // 	if (!verz.empty())
