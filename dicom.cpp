@@ -508,19 +508,24 @@ void hhcl::verzeichnisse()
 
 void hhcl::pruefdcmtk()
 {
-  const double dcmv=progvers("dcmj2pnm");
+//  const double dcmv=progvers("dcmj2pnm");
+  double dcmv=progvers("dcmconv");
 	if (dcmv<3.62) {
-		int altobverb=obverb;
-		obverb=1;
-		linstp->doggfinst("cmake",obverb,oblog); 
-		const string proj="dcmtk_copy";
-		holvomnetz(proj);
-		kompiliere(proj,s_gz);
-		obverb=altobverb;
-	} // 	if (dcmv<3.62)
+		systemrueck("zypper in dcmtk");	
+		dcmv=progvers("dcmconv");
+		if (dcmv<3.62) {
+			int altobverb=obverb;
+			obverb=1;
+			linstp->doggfinst("cmake",obverb,oblog); 
+			const string proj="dcmtk_copy";
+			holvomnetz(proj);
+			kompiliere(proj,s_gz);
+			obverb=altobverb;
+		} // 	if (dcmv<3.62)
+	}
 } // void paramcl::pruefdcmtk()
 
- 
+
 // aufgerufen in: main und pruefcapi
 void hhcl::virtautokonfschreib()
 {
