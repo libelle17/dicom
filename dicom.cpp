@@ -511,15 +511,23 @@ void hhcl::pruefdcmtk()
 //  const double dcmv=progvers("dcmj2pnm");
   double dcmv=progvers("dcmconv");
 	if (dcmv<3.62) {
-		systemrueck("zypper in dcmtk");	
+		systemrueck("zypper in dcmtk",obverb,oblog);
 		dcmv=progvers("dcmconv");
 		if (dcmv<3.62) {
 			int altobverb=obverb;
 			obverb=1;
-			linstp->doggfinst("cmake",obverb,oblog); 
+			linstp->doggfinst("cmake",obverb,oblog);
 			const string proj="dcmtk_copy";
 			holvomnetz(proj);
-			kompiliere(proj,s_gz);
+			kompilbase(proj,s_gz);
+			const string ivp=instvz+vtz+proj;
+			const string bef="cd \""+ivp+"\""
+				"&& rm -f CMakeCache.txt"
+				"&& cmake -DCMAKE_INSTALL_PREFIX=/usr . "
+				"&& make";
+			if (!(systemrueck(bef,obverb,oblog,0,0)))
+				systemrueck("cd \""+ivp+"\" && make install",obverb,oblog,0,1);
+			anfgg(unindt,"cd \""+ivp+"\" && cat install_manifest.txt|"+sudc+linstp->xargspf+" rm; cd \""+instvz+"\"",bef,obverb,oblog);
 			obverb=altobverb;
 		} // 	if (dcmv<3.62)
 	}
