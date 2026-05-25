@@ -99,6 +99,9 @@ enum T_
 	T_nm_k,
 	T_nochmal_l,
 	T_Nochmal_Erklaerung,
+	T_jz_k,
+	T_jetztzu_l,
+	T_Jetztzu_Erklaerung,
 	T_MAX //α
 }; // enum T_ //ω
 
@@ -109,7 +112,6 @@ class hhcl:public dhcl
 		svec fbip; // Fritzbox-IP
 		uchar anhl{0};    // <DPROG> anhalten
 		uchar richtalte{0};    // <DPROG> anhalten
-		uchar obnochmal{0};   // bereits importierte Dateien nochmal speichern
 		string dszahl{"30"}; // Datensatzzahl fuer Tabellenausgaben
 		//ω
 		string qvz; // Quellverzeichnis // ="/DATA/Patientendokumente/HDneu";
@@ -133,6 +135,7 @@ class hhcl:public dhcl
 		ulong dbz{0}; // Datenbankzahl
 		ulong umz{0}; // Zahl der Umgewandelten
 		ulong u2z{0}; // Zahl der nach Ziel 2 Verschobenen
+		uchar obnochmal{0};   // bereits importierte Dateien nochmal speichern
 		string duser; // ="sturm";
 		string nvz; // Gesamtpfad Importverzeichnis, z.B. /DATA/Patientendokumente/HDalt/20171011_082351
 	private: //α //ω
@@ -195,4 +198,3 @@ class datcl
 		void aufPlatte(hhcl& pm,const size_t& aktc,const size_t& nr);
 		datcl(string& name,int obverb=0);
 };
-

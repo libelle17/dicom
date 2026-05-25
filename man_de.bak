@@ -2,7 +2,8 @@
 .\" Manual-Seite für ²DPROG²
 .\" Schreiben Sie an geraldschade@gmx.de, wenn Sie Fehler oder Mängel entdeckt haben
 .pc
-.TH man 1 "25.05.26" "Version 0.10218" "Manual-Seite für ²DPROG²"
+.hy 0
+.TH man 1 "25.05.26" "Version 0.1022" "Manual-Seite für ²DPROG²"
 .SH NAME
 \fB²DPROG² \- DICOM-Import\fR: liest DICOM-Dateien ein, wandelt sie in PNG-Bilder um und trägt ihre Metadaten in eine MariaDB-Datenbank ein
 .br
@@ -51,6 +52,8 @@ Ist eine Datei bereits in der Datenbank vorhanden, wird sie standardmäßig übe
 .br
 \fB -jv, --jetztvon <pfad>\fR: verwendet für diesen Aufruf \fI<pfad>\fR als Quellverzeichnis (wird nicht gespeichert) ('\fB\fR')
 .br
+\fB -jz, --jetztzu <pfad>\fR: verwendet für diesen Aufruf \fI<pfad>\fR als Zielverzeichnis (wird nicht gespeichert) ('\fB\fR')
+.br
 \fB -nm, --nochmal\fR: speichert auch bereits importierte Dateien nochmals ins Zielverzeichnis und in die Datenbank (\fB0\fR)
 .br
 \fB -n, --dszahl <zahl>\fR: Zahl der aufzulistenden Datensätze = <zahl> statt ('\fB30\fR')
@@ -97,7 +100,7 @@ Ist eine Datei bereits in der Datenbank vorhanden, wird sie standardmäßig übe
 .br
 \fB -tbn, --tabelle <string>\fR: verwendet die Datenbanktabelle <string> anstatt ('\fBdictab\fR')
 .br
-\fB -fd, --find <zahl>\fR: Dateisuche-Version 0.10218
+\fB -fd, --find <zahl>\fR: Dateisuche-Version 0.1022
 .br
 \fB -host, --host <string>\fR: verwendet Datenbank auf Host <string> anstatt ('\fBlocalhost\fR')
 .br

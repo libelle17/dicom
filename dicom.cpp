@@ -205,6 +205,12 @@ char const *DPROG_T[T_MAX+1][SprachZahl]=
 	{"nochmal","redo"},
 	// T_Nochmal_Erklaerung
 	{"speichert auch bereits importierte Dateien nochmal","re-saves already imported files"},
+	// T_jz_k
+	{"jz","jz"},
+	// T_jetztzu_l
+	{"jetztzu","targetnow"},
+	// T_Jetztzu_Erklaerung
+	{"Zielverzeichnis aktuell (ohne Speichern) anstatt ","target directory now (without saving) instead of "},
 	{"",""} //α
 }; // char const *DPROG_T[T_MAX+1][SprachZahl]=
 
@@ -326,6 +332,7 @@ void hhcl::virtinitopt()
 	opn<<new optcl(/*pname*/"zvz",/*pptr*/&zvz,/*art*/pverz,T_zvz_k,T_zvz_l,/*TxBp*/&Tx,/*Txi*/T_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!zvz.empty());
 	opn<<new optcl(/*pname*/"z2vz",/*pptr*/&z2vz,/*art*/pverz,T_z2vz_k,T_z2vz_l,/*TxBp*/&Tx,/*Txi*/T_Zweites_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!z2vz.empty());
 	opn<<new optcl(/*pname*/"qvz",/*pptr*/&qvz,/*art*/pverz,T_jv_k,T_jetztvon_l,/*TxBp*/&Tx,/*Txi*/T_Jetztvon_Erklaerung,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/0);
+	opn<<new optcl(/*pptr*/&zvz,/*art*/pverz,T_jz_k,T_jetztzu_l,/*TxBp*/&Tx,/*Txi*/T_Jetztzu_Erklaerung,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/0);
 	opn<<new optcl(/*pptr*/&obnochmal,/*art*/puchar,T_nm_k,T_nochmal_l,/*TxBp*/&Tx,/*Txi*/T_Nochmal_Erklaerung,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/1);
 	opn<<new optcl(/*pname*/"tbn",/*pptr*/&tbn,/*art*/pstri,/*kurzi*/T_tb_k,/*langi*/T_tabelle_l,/*TxBp*/&Txd,/*Txi*/T_verwendet_die_Tabelle_string_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/!tbn.empty());
 	dhcl::virtinitopt(); //α
@@ -718,7 +725,7 @@ void datcl::aufPlatte(hhcl& pm,const size_t& aktc,const size_t& nr)
 			if (j<dim-2) bname+='_'; // nicht am Schluss
 		} // 			if (j!=itnr && j!=rpnr)
 	} // 		for(int j=0;j<dim;j++)
-	if (id.empty()) {
+	if (id.empty() && !pm.obnochmal) {
 		fLog(rots+bname+schwarz+Tx[T_schon_da],pm.obverb,pm.oblog);
 	} else {
 		const string neuname=pm.zvz+"/"+bname+".png";
@@ -754,9 +761,10 @@ void datcl::aufPlatte(hhcl& pm,const size_t& aktc,const size_t& nr)
 			if (!pruefverz(z2vzj,pm.obverb,pm.oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/pm.duser,/*benutzer=*/pm.duser,/*obmachen=*/1)) {
 				const string cmd{"cp -a '"+neuname+"' '"+z2vzj+"'"};
 				pm.u2z+=!systemrueck(cmd,pm.obverb,pm.oblog);
-			} // 			if (!pruefverz(z2vzj,obverb,oblog,/*obmitfacl=*/1,/*obmitcon=*/1,/*besitzer=*/duser,/*benutzer=*/duser,/*obmachen=*/1))
+			} // 			if (!pruefverz(...))
 		} else {
-			RS weg(pm.My,"DELETE FROM `"+pm.tbn+"` WHERE ID="+id,aktc,pm.ZDB);
+			if (!id.empty())
+				RS weg(pm.My,"DELETE FROM `"+pm.tbn+"` WHERE ID="+id,aktc,pm.ZDB);
 		} // 		if (!lstat(neuname.c_str(),&nst)) else
 		//		systemrueck("touch -r '"+rueck[nr]+"' '"+neuname+"'",pm.obverb,pm.oblog); // = zu spaet
 		if (gibaus)

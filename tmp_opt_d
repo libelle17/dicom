@@ -1,5 +1,5 @@
 .br
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10218 \fR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10220 \fR
 .br
 \fBOptionen, die nicht gespeichert werden (aktueller Wert in Klammern): \fR
 .br
@@ -10,6 +10,8 @@
 \fB -ra, --richtalte\fR: alte, nicht bearbeitete nachholen (\fB0\fR)
 .br
 \fB -rueck, --rueck\fR: letzten Import rückgängig machen (\fB0\fR)
+.br
+\fB -jz, --jetztzu <pfad>\fR: Zielverzeichnis aktuell (ohne Speichern) anstatt  ('\fB/var/spool/dicomziel\fR')
 .br
 \fB -nm, --nochmal\fR: speichert auch bereits importierte Dateien nochmal (\fB0\fR)
 .br

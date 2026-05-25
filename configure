@@ -59,26 +59,9 @@ getIPR() {
 			REPOS="${SUDC}$Z lr|grep 'g++\|devel_gcc' \>$KR||${SUDC}$Z ar http://download.opensuse.org/repositories/devel:/gcc/\`cat /etc/*-release|grep ^NAME= |cut -d'\"' -f2|sed 's/ /_/'\`_\`cat /etc/*-release|grep ^VERSION_ID= |cut -d'\"' -f2\`/devel:gcc.repo;";
 			UREPO="${SUDC}$Z lr|grep \\\\\"g++\\\\\|devel_gcc\\\\\" \>$KR && ${SUDC}$Z rr devel_gcc;";
 			COMP="gcc gcc-c++"; # \$(CCInst)";
-      test -f vars && LBOOST=$(grep "^LBOOST::=" vars|cut -d= -f2) ||LBOOST=;
-      test -f vars && LBIO=$(grep "^LBIO::=" vars|cut -d= -f2) ||LBIO=;
-      test -f vars && LBLO=$(grep "^LBLO::=" vars|cut -d= -f2) ||LBLO=;
-      # OpenSUSE 16.0+: Boost-Paketnamen direkt aus zypper-Cache ermitteln
-      # Gelesene Boost-Werte aus vars prüfen – existieren sie im Cache?
-      if [ "$LBOOST" ] && ! grep -qs "^$LBOOST" /var/cache/zypp/solv/*/solv.idx 2>/dev/null; then
-        LBOOST=; LBIO=; LBLO=;  # ungültig → neu ermitteln lassen
-      fi;      
-      _OSV=$(grep "^VERSION_ID=" /etc/os-release 2>/dev/null|cut -d'"' -f2);
-      if [ -z "$LBOOST" ]; then
-      _BV=$(grep -s --no-filename "^libboost_locale" /var/cache/zypp/solv/*/solv.idx 2>/dev/null \
-        | awk '$3=="x86_64" && $1~/[0-9]-devel$/ && $1!~/debuginfo|32bit|v3/' \
-        | cut -f1 | head -n1);
-      if [ "$_BV" ]; then
-        _BN=$(echo "$_BV"|sed 's/libboost_locale//;s/-devel//');
-        LBOOST=boost-devel;
-        LBIO=libboost_iostreams${_BN}-devel;
-        LBLO=$_BV;
-      fi;  
-      fi;      
+			test -f vars && LBOOST=$(grep LBOOST vars|cut -d= -f2) ||LBOOST=;
+			test -f vars && LBIO=$(grep LBIO vars|cut -d= -f2) ||LBIO=;
+			test -f vars && LBLO=$(grep LBLO vars|cut -d= -f2) ||LBLO=;
 			# der Aufruf `zypper se ...boost...` dauert so lang und sollte bei `make mitzieh` meist nicht noetig sein
 			if test "$ICH" != viall -a -z "$ohneboost" -a "$QD"; then
 			 if test -z "$PAR1" -o -z "$LBOOST" -o -z "$LBIO" -o -z "$LBLO"; then
@@ -93,9 +76,14 @@ getIPR() {
           LBIO=$(V=libboost_iostreams;echo "$zse" $V|grep "| $V"|tail -n1|cut -d'|' -f2|sed -e 's/^[[:space:]]*//;s/[[:space:]]*$//');
           LBLO=$(V=libboost_locale;echo "$zse" $V|grep "| $V"|tail -n1|cut -d'|' -f2|sed -e 's/^[[:space:]]*//;s/[[:space:]]*$//');
         fi;
-        [ -z "$LBOOST" ] && LBOOST=$(grep -s --no-filename "^boost_.*-devel" /var/cache/zypp/solv/*/solv.idx |cut -f1 | sort -r --unique|head -n1);
-        [ -z "$LBIO" ] && LBIO=$(grep -s --no-filename "^libboost_iostreams" /var/cache/zypp/solv/*/solv.idx |cut -f1 | sort -r --unique|head -n1);
-        [ -z "$LBLO" ] && LBLO=$(grep -s --no-filename "^libboost_locale" /var/cache/zypp/solv/*/solv.idx |cut -f1 | sort -r --unique|head -n1);
+        # Suche nach boost_X_YY-devel (alt) ODER boost-devel (Leap 16+)
+        LBOOST=$(grep -s --no-filename "^boost[_-].*devel" /var/cache/zypp/solv/*/solv.idx |cut -f1 | sort -r --unique|head -n1);
+        # Fallback: boost-devel direkt prüfen falls Cache-Grep nichts liefert
+        [ -z "$LBOOST" ] && rpm -q boost-devel >/dev/null 2>&1 && LBOOST=boost-devel;
+        LBIO=$(grep -s --no-filename "^libboost_iostreams" /var/cache/zypp/solv/*/solv.idx |cut -f1 | sort -r --unique|head -n1);
+        [ -z "$LBIO" ] && rpm -q libboost_iostreams-devel >/dev/null 2>&1 && LBIO=libboost_iostreams-devel;
+        LBLO=$(grep -s --no-filename "^libboost_locale" /var/cache/zypp/solv/*/solv.idx |cut -f1 | sort -r --unique|head -n1);
+        [ -z "$LBLO" ] && rpm -q libboost_locale-devel >/dev/null 2>&1 && LBLO=libboost_locale-devel;
 				[ ! "$LBOOST" ]&&[ "$LBIO" ]&&[ "$LBLO" ]&& LBOOST=$(V=boost-license;echo "$zse" $V|grep "| $V"|tail -n1|cut -d'|' -f2|sed -e 's/^[[:space:]]*//;s/[[:space:]]*$//');
 			 fi;
 			fi;
@@ -219,6 +207,7 @@ exportvars() {
 	rm -f vars;
 	for v in OSNR IPR IP_R UPR UDPR SPR UNROH UNF AUNF ILOG PGROFF LT LT5 LBOOST LBIO LBLO LACL LCURL LCURS LSPAN LGLIB LSOUP LSND QPDF LTERM LGSSDP LCAPI LM18 dev libmdb REPOS UREPO COMP GITV DTN DPROG; do
 		eval nv=\$$v; 
+#    echo v: $v, nv: $nv
 		printf "$v::=$nv\n" >>vars; 
 	done;
 #	printf "testvar::=rot gelb grün\n" >>vars
@@ -331,6 +320,7 @@ else :; fi
 }
 
 # hier geht's los ...
+# Verzeichnis des aktuellen scripts
 OSNR=0 # 1=Mint, 2=Ubuntu, 3=Debian, 4=SUSE, 5=Fedora, 6=Fedoraalt, 7=Mageia, 8=Manjaro
 getOS;
 PAR1=$1;
@@ -354,7 +344,7 @@ LGLIB=glib-2.0;
 LSOUP=libsoup-${dev};
 LSND=libsndfile-${dev};
 QPDF=qpdf-${dev};
-LTERM=termcap;
+LTERM="libtermcap2 termcap-${dev}";
 LGSSDP=libgssdp-${dev};
 LCAPI="libcapi20-3 libcapifax-${dev}";
 Z=""
