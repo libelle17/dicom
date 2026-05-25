@@ -2,8 +2,8 @@
 .\" manual page for ²DPROG²
 .\" write to geraldschade@gmx.de if You discover an error or a deficit in the program
 .pc
+.TH man 1 "25.05.26" "Version 0.10221" "\fB²DPROG²\fR man page"
 .hy 0
-.TH man 1 "25.05.26" "Version 0.1022" "\fB²DPROG²\fR man page"
 .SH NAME
 \fB²DPROG² \- DICOM import\fR: reads DICOM files, converts them to PNG images and records their metadata in a MariaDB database
 .br
@@ -40,7 +40,7 @@ If a file is already present in the database, it is skipped by default (option \
 .SH OPTIONS
  '\fB²DPROG² -?\fR' or '\fB²DPROG² -h\fR' shows the important command line options and '\fB²DPROG² -lh\fR' all of them. The configuration file can be edited directly by '\fB²DPROG² -vi\fR' or interactively by '\fB²DPROG² -rf\fR'.
 .br
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10220 \fR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10221 \fR
 .br
 \fBOptions which are not saved (current value in parentheses): \fR
 .br
@@ -51,6 +51,8 @@ If a file is already present in the database, it is skipped by default (option \
 \fB -co, --correctold\fR: catch up old, not edited (\fB0\fR)
 .br
 \fB -back, --back\fR: revert last import (\fB0\fR)
+.br
+\fB -jv, --sourcenow <path>\fR: source directory now (without saving) instead of  ('\fB/var/spool/dicomneu\fR')
 .br
 \fB -jz, --targetnow <path>\fR: target directory now (without saving) instead of  ('\fB/var/spool/dicomziel\fR')
 .br
@@ -95,8 +97,6 @@ If a file is already present in the database, it is skipped by default (option \
 \fB -tdr, --targetdir <path>\fR: target directory instead of  ('\fB/var/spool/dicomziel\fR')
 .br
 \fB -t2dr, --target2dir <path>\fR: Second target directory instead of  ('\fB/var/spool/dicomziel2\fR')
-.br
-\fB -jv, --sourcenow <path>\fR: source directory now (without saving) instead of  ('\fB/var/spool/dicomneu\fR')
 .br
 \fB -tb, --table <string>\fR: uses the table <string> instead of ('\fBdictab\fR')
 .br

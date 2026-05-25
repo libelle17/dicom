@@ -2,8 +2,8 @@
 .\" manual page for ²DPROG²
 .\" write to geraldschade@gmx.de if You discover an error or a deficit in the program
 .pc
+.TH man 1 "25.05.26" "Version 0.10221" "\fB²DPROG²\fR man page"
 .hy 0
-.TH man 1 "25.05.26" "Version 0.1022" "\fB²DPROG²\fR man page"
 .SH NAME
 \fB²DPROG² \- DICOM import\fR: reads DICOM files, converts them to PNG images and records their metadata in a MariaDB database
 .br
