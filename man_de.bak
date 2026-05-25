@@ -2,7 +2,7 @@
 .\" Manual-Seite für ²DPROG²
 .\" Schreiben Sie an geraldschade@gmx.de, wenn Sie Fehler oder Mängel entdeckt haben
 .pc
-.TH man 1 "25.05.26" "Version 0.10221" "Manual-Seite für ²DPROG²"
+.TH man 1 "25.05.26" "Version 0.10222" "Manual-Seite für ²DPROG²"
 .hy 0
 .SH NAME
 \fB²DPROG² \- DICOM-Import\fR: liest DICOM-Dateien ein, wandelt sie in PNG-Bilder um und trägt ihre Metadaten in eine MariaDB-Datenbank ein
@@ -42,85 +42,85 @@ Ist eine Datei bereits in der Datenbank vorhanden, wird sie standardmäßig übe
 .SH OPTIONEN
  '\fB²DPROG² -?\fR' oder '\fB²DPROG² -h\fR' zeigt die wichtigen Befehlszeilenoptionen und '\fB²DPROG² -lh\fR' alle. Die Konfigurationsdatei kann über '\fB²DPROG² -vi\fR' direkt editiert oder über '\fB²DPROG² -rf\fR' interaktiv gepflegt werden.
 .br
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10221 \fR
+.br
 \fBOptionen, die nicht gespeichert werden (aktueller Wert in Klammern): \fR
 .br
-\fB -st, --stop\fR: ²DPROG² anhalten (\fB0\fR)
+\fB -st, --stop\fR: dicom anhalten (\fB0\fR)
 .br
-\fB -ra, --richtalte\fR: alte, nicht bearbeitete Dateien im Archivverzeichnis nachholen (\fB0\fR)
+\fB -n, --dszahl <string>\fR: Zahl der aufzulistenden Datensaetze = <zahl> statt ('\fB30\fR')
+.br
+\fB -ra, --richtalte\fR: alte, nicht bearbeitete nachholen (\fB0\fR)
 .br
 \fB -rueck, --rueck\fR: letzten Import rückgängig machen (\fB0\fR)
 .br
-\fB -jv, --jetztvon <pfad>\fR: verwendet für diesen Aufruf \fI<pfad>\fR als Quellverzeichnis (wird nicht gespeichert) ('\fB\fR')
+\fB -jv, --jetztvon <pfad>\fR: Quellverzeichnis aktuell (ohne Speichern) anstatt  ('\fB/var/spool/dicomneu\fR')
 .br
-\fB -jz, --jetztzu <pfad>\fR: verwendet für diesen Aufruf \fI<pfad>\fR als Zielverzeichnis (wird nicht gespeichert) ('\fB\fR')
+\fB -jz, --jetztzu <pfad>\fR: Zielverzeichnis aktuell (ohne Speichern) anstatt  ('\fB/var/spool/dicomziel\fR')
 .br
-\fB -nm, --nochmal\fR: speichert auch bereits importierte Dateien nochmals ins Zielverzeichnis und in die Datenbank (\fB0\fR)
+\fB -nm, --nochmal\fR: speichert auch bereits importierte Dateien nochmal (\fB0\fR)
 .br
-\fB -n, --dszahl <zahl>\fR: Zahl der aufzulistenden Datensätze = <zahl> statt ('\fB30\fR')
+\fB -sqlw, --sql-wortreich\fR: Bildschirmausgabe mit SQL-Befehlen (\fB0\fR)
 .br
-\fB -lfn, --logfilenew\fR: Protokolldatei vorher löschen (\fB0\fR)
+\fB -w, --wortreich\fR: Bildschirmausgabe gespraechiger (\fB0\fR)
 .br
-\fB -cf, --conffile <string>\fR: verwendet Konfigurationsdatei <string> anstatt ('\fB\fR')
+\fB -stu, --stumm\fR: Bildschirmausgabe ganz stumm (\fB0\fR)
 .br
-\fB -h, --help\fR: Erklärung der häufig verwendeten Optionen (\fB3\fR)
+\fB -ldn, --logdateineu\fR: logdatei vorher loeschen (\fB0\fR)
 .br
-\fB -lh, --longhelp\fR: Erklärung aller Optionen (\fB3\fR)
+\fB -kd, --konfdatei <string>\fR: verwendet Konfigurationsdatei <string> anstatt ('\fB\fR')
 .br
-\fB -vi, --vi\fR: Konfigurationsdatei, Protokolldatei usw. bearbeiten/anzeigen (beenden mit ':qa') (\fB0\fR)
+\fB -h, --hilfe\fR: Erklaerung haeufiger Optionen (\fB3\fR)
 .br
-\fB -scf, --showconf\fR: Name der Konfigurationsdatei anzeigen (\fB0\fR)
+\fB -lh, --langhilfe\fR: Erklaerung aller Optionen (\fB3\fR)
 .br
-\fB -writec, --writeconf\fR: Konfigurationsdatei schreiben (\fB0\fR)
+\fB -vi, --vi\fR: Konfigurationsdatei , Logdatei usw. bearbeiten/sehen (beenden mit ':qa') (\fB0\fR)
 .br
-\fB -vs, --vs\fR: Quelldateien bearbeiten/anzeigen (beenden mit ':qa') (\fB0\fR)
+\fB -zkf, --konfzeig\fR: Konfigurationsdateinamenanzeigen (\fB0\fR)
 .br
-\fB -ia, --interactive\fR: alle Parameter werden abgefragt (\fB0\fR)
+\fB -kschrb, --kschreib\fR: Konfigurationsdatei schreiben (\fB0\fR)
 .br
-\fB -noia, --nointeraction\fR: keine Rückfragen, z.B. für den Cron-Aufruf (\fB0\fR)
+\fB -vs, --vs\fR: Quelldateien in \fB/home/schade/dicom\fR bearbeiten/sehen (beenden mit ':qa') (\fB0\fR)
 .br
-\fB -info, --version\fR: Programmversion anzeigen (\fB0\fR)
+\fB -rf, --rueckfragen\fR: alle Parameter werden abgefragt (darunter einige hier nicht gezeigte) (\fB0\fR)
 .br
-\fB -sqlv, --sql-verbose\fR: Bildschirmausgabe mit SQL-Befehlen (\fB0\fR)
+\fB -krf, --keinerueckfragen\fR: keine Rueckfragen, z.B. fuer Aufruf aus cron (\fB0\fR)
 .br
-\fB -v, --verbose\fR: ausführlichere Bildschirmausgabe (\fB0\fR)
+\fB -info, --version\fR: Zeigt die Programmversion an (\fB0\fR)
 .br
-\fB -mu, --mute\fR: keine Bildschirmausgabe (\fB0\fR)
+\fBOptionen z.Speich. i.Konfigur'datei (vorausg. '1'=doch nicht speichern, 'no'=Gegenteil, z.B. '-noocra','-1noocri'):\fR
 .br
-\fBOptionen, die in der Konfigurationsdatei gespeichert werden:\fR
+\fB -duser, --duser <string>\fR: verwendet fuer Samba den Linux-Benutzer <string> anstatt ('\fBsturm\fR')
 .br
-\fB -qvz, --quellvz <pfad>\fR: Quellverzeichnis anstatt ('\fB/var/spool/dicomneu\fR')
+\fB -qvz, --quellvz <pfad>\fR: Quellverzeichnis anstatt  ('\fB/var/spool/dicomneu\fR')
 .br
-\fB -avz, --archvz <pfad>\fR: Archivverzeichnis anstatt ('\fB/var/spool/dicomalt\fR')
+\fB -avz, --archvz <pfad>\fR: Archiverzeichnis anstatt  ('\fB/var/spool/dicomalt\fR')
 .br
-\fB -zvz, --zielvz <pfad>\fR: Zielverzeichnis anstatt ('\fB/var/spool/dicomziel\fR')
+\fB -zvz, --zielvz <pfad>\fR: Zielverzeichnis anstatt  ('\fB/var/spool/dicomziel\fR')
 .br
-\fB -z2vz, --ziel2vz <pfad>\fR: Zweites Zielverzeichnis anstatt ('\fB/var/spool/dicomziel2\fR')
+\fB -z2vz, --ziel2vz <pfad>\fR: Zweites Zielverzeichnis anstatt  ('\fB/var/spool/dicomziel2\fR')
 .br
-\fB -duser, --duser <string>\fR: verwendet für Samba den Linux-Benutzer <string> anstatt ('\fBsturm\fR')
+\fB -tb, --tabelle <string>\fR: verwendet die Tabelle <string> anstatt ('\fBdictab\fR')
 .br
-\fB -tbn, --tabelle <string>\fR: verwendet die Datenbanktabelle <string> anstatt ('\fBdictab\fR')
+\fB -host, --host <string>\fR: verwendet die Datenbank auf Host <string> anstatt auf ('\fBlocalhost\fR')
 .br
-\fB -fd, --find <zahl>\fR: Dateisuche-Version 0.10221
+\fB -muser, --muser <string>\fR: verwendet fuer MySQL/MariaDB den Benutzer <string> anstatt ('\fB\fR')
 .br
-\fB -host, --host <string>\fR: verwendet Datenbank auf Host <string> anstatt ('\fBlocalhost\fR')
+\fB -mpwd, --mpwd <string>\fR: verwendet fuer MySQL/MariaDB das Passwort <string>
 .br
-\fB -muser, --muser <string>\fR: verwendet den Benutzer <string> für MySQL/MariaDB anstatt ('\fBuser\fR')
+\fB -db, --datenbank <string>\fR: verwendet die Datenbank <string> anstatt ('\fB\fR')
 .br
-\fB -mpwd, --mpwd <string>\fR: verwendet das Passwort <string> für MySQL/MariaDB
+\fB -sp, --sprache <string>\fR: Language/Sprache/Lingue/Lingua [\fBd\fReutsch,\fBe\fRnglisch] ('\fBd\fR')
 .br
-\fB -db, --database <string>\fR: verwendet die Datenbank <string> anstatt ('\fBfotosinp\fR')
+\fB -lvz, --logvz <pfad>\fR: waehlt als Logverzeichnis <pfad>, derzeit ('\fB/var/log\fR')
 .br
-\fB -lg, --language <string>\fR: Sprache/Language [\fBd\fReutsch,\fBe\fRnglisch] ('\fBd\fR')
+\fB -ld, --logdname <string>\fR: logdatei <string> (im Pfad '\fB/var/log\fR') wird verwendet anstatt ('\fBdicom.log\fR')
 .br
-\fB -ldr, --logdir <pfad>\fR: wählt <pfad> als Protokollverzeichnis, derzeit ('\fB/var/log\fR')
+\fB -l, --log <zahl>\fR: protokolliert ausfuehrlich in Datei '\fB/var/log/dicom.log\fR' (sonst knapper) (\fB0\fR)
 .br
-\fB -lf, --logfilename <string>\fR: verwendet Protokolldatei <string> anstatt ('\fB²DPROG².log\fR')
+\fB -cm, --cronminuten <string>\fR: alle wieviel Minuten soll \fBdicom\fR ueber crontab aufgerufen werden (0=gar nicht), anstatt  ('\fB0\fR')
 .br
-\fB -l, --log <zahl>\fR: ausführlicheres Protokoll in Datei '\fB/var/log/²DPROG².log\fR' (\fB0\fR)
-.br
-\fB -cm, --cronminutes <string>\fR: alle wieviel Minuten soll \fB²DPROG²\fR im Crontab aufgerufen werden (0=gar nicht) anstatt ('\fB0\fR')
-.br
-\fB -autoupd, --autoupdate <zahl>\fR: Programm automatisch aktualisieren (\fB1\fR)
+\fB -autoakt, --autoaktual <zahl>\fR: Programm automatisch aktualisieren (\fB1\fR)
 .SH FUNKTIONSWEISE
 .LP
 Beim Aufruf führt '\fB²DPROG²\fR' folgende Schritte aus:

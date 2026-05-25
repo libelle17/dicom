@@ -117,6 +117,8 @@ class hhcl:public dhcl
 		string qvz; // Quellverzeichnis // ="/DATA/Patientendokumente/HDneu";
 		string avz; // Verzeichnis alter Übertragungen // ="/DATA/Patientendokumente/HDalt";
 		uchar obrueck{0};   // ob der letzte Import rueckgaengig gemacht werden soll
+		string jvvz; // einmaliges Quellverzeichnis (-jv), wird nach Konfig-Laden auf qvz übertragen
+		string jzvz; // einmaliges Zielverzeichnis  (-jz), wird nach Konfig-Laden auf zvz übertragen
 		int pfehler{0}; // Rueckgabewert
 		char impvz[16]; // Importverzeichnis, z.B. 20171011_082351
     string suchstr;  // Wortteil, nach dem in alten Uebertragungen gesucht werden soll
@@ -198,3 +200,4 @@ class datcl
 		void aufPlatte(hhcl& pm,const size_t& aktc,const size_t& nr);
 		datcl(string& name,int obverb=0);
 };
+

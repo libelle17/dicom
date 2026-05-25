@@ -1,5 +1,5 @@
 .br
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10221 \fR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10222 \fR
 .br
 \fBOptionen, die nicht gespeichert werden (aktueller Wert in Klammern): \fR
 .br
@@ -11,9 +11,9 @@
 .br
 \fB -rueck, --rueck\fR: letzten Import rückgängig machen (\fB0\fR)
 .br
-\fB -jv, --jetztvon <pfad>\fR: Quellverzeichnis aktuell (ohne Speichern) anstatt  ('\fB/var/spool/dicomneu\fR')
+\fB -jv, --jetztvon <pfad>\fR: Quellverzeichnis aktuell (ohne Speichern) anstatt  ('\fB\fR')
 .br
-\fB -jz, --jetztzu <pfad>\fR: Zielverzeichnis aktuell (ohne Speichern) anstatt  ('\fB/var/spool/dicomziel\fR')
+\fB -jz, --jetztzu <pfad>\fR: Zielverzeichnis aktuell (ohne Speichern) anstatt  ('\fB\fR')
 .br
 \fB -nm, --nochmal\fR: speichert auch bereits importierte Dateien nochmal (\fB0\fR)
 .br

@@ -1,5 +1,5 @@
 .br
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10221 \fR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10222 \fR
 .br
 \fBOptions which are not saved (current value in parentheses): \fR
 .br
@@ -11,9 +11,9 @@
 .br
 \fB -back, --back\fR: revert last import (\fB0\fR)
 .br
-\fB -jv, --sourcenow <path>\fR: source directory now (without saving) instead of  ('\fB/var/spool/dicomneu\fR')
+\fB -jv, --sourcenow <path>\fR: source directory now (without saving) instead of  ('\fB\fR')
 .br
-\fB -jz, --targetnow <path>\fR: target directory now (without saving) instead of  ('\fB/var/spool/dicomziel\fR')
+\fB -jz, --targetnow <path>\fR: target directory now (without saving) instead of  ('\fB\fR')
 .br
 \fB -rm, --redo\fR: re-saves already imported files (\fB0\fR)
 .br

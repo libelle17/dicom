@@ -331,8 +331,8 @@ void hhcl::virtinitopt()
 	opn<<new optcl(/*pname*/"avz",/*pptr*/&avz,/*art*/pverz,T_avz_k,T_avz_l,/*TxBp*/&Tx,/*Txi*/T_Archivverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!avz.empty());
 	opn<<new optcl(/*pname*/"zvz",/*pptr*/&zvz,/*art*/pverz,T_zvz_k,T_zvz_l,/*TxBp*/&Tx,/*Txi*/T_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!zvz.empty());
 	opn<<new optcl(/*pname*/"z2vz",/*pptr*/&z2vz,/*art*/pverz,T_z2vz_k,T_z2vz_l,/*TxBp*/&Tx,/*Txi*/T_Zweites_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!z2vz.empty());
-	opn<<new optcl(/*pptr*/&qvz,/*art*/pverz,T_jv_k,T_jetztvon_l,/*TxBp*/&Tx,/*Txi*/T_Jetztvon_Erklaerung,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/0);
-	opn<<new optcl(/*pptr*/&zvz,/*art*/pverz,T_jz_k,T_jetztzu_l,/*TxBp*/&Tx,/*Txi*/T_Jetztzu_Erklaerung,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/0);
+	opn<<new optcl(/*pptr*/&jvvz,/*art*/pverz,T_jv_k,T_jetztvon_l,/*TxBp*/&Tx,/*Txi*/T_Jetztvon_Erklaerung,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/0);
+	opn<<new optcl(/*pptr*/&jzvz,/*art*/pverz,T_jz_k,T_jetztzu_l,/*TxBp*/&Tx,/*Txi*/T_Jetztzu_Erklaerung,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/0);
 	opn<<new optcl(/*pptr*/&obnochmal,/*art*/puchar,T_nm_k,T_nochmal_l,/*TxBp*/&Tx,/*Txi*/T_Nochmal_Erklaerung,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/1);
 	opn<<new optcl(/*pname*/"tbn",/*pptr*/&tbn,/*art*/pstri,/*kurzi*/T_tb_k,/*langi*/T_tabelle_l,/*TxBp*/&Txd,/*Txi*/T_verwendet_die_Tabelle_string_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/!tbn.empty());
 	dhcl::virtinitopt(); //α
@@ -375,7 +375,9 @@ void hhcl::virtzeigversion(const string& ltiffv/*=string()*/)
 // aufgerufen in lauf
 void hhcl::pvirtvorrueckfragen()
 {
-	hLog(violetts+Tx[T_pvirtvorrueckfragen]+schwarz); //ω
+	hLog(violetts+Tx[T_pvirtvorrueckfragen]+schwarz);
+	if (!jvvz.empty()) { qvz=jvvz; hLog("jv: qvz="+qvz); }
+	if (!jzvz.empty()) { zvz=jzvz; hLog("jz: zvz="+zvz); }
 } // void hhcl::pvirtvorrueckfragen //α
 
 void hhcl::neurf()
