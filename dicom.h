@@ -93,6 +93,12 @@ enum T_
 	T_Keine_Dateien_in,
 	T_Gefunden,
 	T_Dateien_in,
+	T_jv_k,
+	T_jetztvon_l,
+	T_Jetztvon_Erklaerung,
+	T_nm_k,
+	T_nochmal_l,
+	T_Nochmal_Erklaerung,
 	T_MAX //α
 }; // enum T_ //ω
 
@@ -103,6 +109,7 @@ class hhcl:public dhcl
 		svec fbip; // Fritzbox-IP
 		uchar anhl{0};    // <DPROG> anhalten
 		uchar richtalte{0};    // <DPROG> anhalten
+		uchar obnochmal{0};   // bereits importierte Dateien nochmal speichern
 		string dszahl{"30"}; // Datensatzzahl fuer Tabellenausgaben
 		//ω
 		string qvz; // Quellverzeichnis // ="/DATA/Patientendokumente/HDneu";

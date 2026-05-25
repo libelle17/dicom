@@ -1,5 +1,5 @@
 .br
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10217 \fR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10218 \fR
 .br
 \fBOptions which are not saved (current value in parentheses): \fR
 .br
@@ -10,6 +10,8 @@
 \fB -co, --correctold\fR: catch up old, not edited (\fB0\fR)
 .br
 \fB -back, --back\fR: revert last import (\fB0\fR)
+.br
+\fB -rm, --redo\fR: re-saves already imported files (\fB0\fR)
 .br
 \fB -sqlv, --sql-verbose\fR: screen output with SQL commands (\fB0\fR)
 .br
@@ -50,6 +52,8 @@
 \fB -tdr, --targetdir <path>\fR: target directory instead of  ('\fB/var/spool/dicomziel\fR')
 .br
 \fB -t2dr, --target2dir <path>\fR: Second target directory instead of  ('\fB/var/spool/dicomziel2\fR')
+.br
+\fB -jv, --sourcenow <path>\fR: source directory now (without saving) instead of  ('\fB/var/spool/dicomneu\fR')
 .br
 \fB -tb, --table <string>\fR: uses the table <string> instead of ('\fBdictab\fR')
 .br

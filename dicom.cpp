@@ -193,6 +193,18 @@ char const *DPROG_T[T_MAX+1][SprachZahl]=
 	{"' gefunden!","'!"},
 	// T_Dateien_in
 	{" Dateien in '"," files found in '"},
+	// T_jv_k
+	{"jv","jv"},
+	// T_jetztvon_l
+	{"jetztvon","sourcenow"},
+	// T_Jetztvon_Erklaerung
+	{"Quellverzeichnis aktuell (ohne Speichern) anstatt ","source directory now (without saving) instead of "},
+	// T_nm_k
+	{"nm","rm"},
+	// T_nochmal_l
+	{"nochmal","redo"},
+	// T_Nochmal_Erklaerung
+	{"speichert auch bereits importierte Dateien nochmal","re-saves already imported files"},
 	{"",""} //α
 }; // char const *DPROG_T[T_MAX+1][SprachZahl]=
 
@@ -313,6 +325,8 @@ void hhcl::virtinitopt()
 	opn<<new optcl(/*pname*/"avz",/*pptr*/&avz,/*art*/pverz,T_avz_k,T_avz_l,/*TxBp*/&Tx,/*Txi*/T_Archivverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!avz.empty());
 	opn<<new optcl(/*pname*/"zvz",/*pptr*/&zvz,/*art*/pverz,T_zvz_k,T_zvz_l,/*TxBp*/&Tx,/*Txi*/T_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!zvz.empty());
 	opn<<new optcl(/*pname*/"z2vz",/*pptr*/&z2vz,/*art*/pverz,T_z2vz_k,T_z2vz_l,/*TxBp*/&Tx,/*Txi*/T_Zweites_Zielverzeichnis_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/!z2vz.empty());
+	opn<<new optcl(/*pname*/"qvz",/*pptr*/&qvz,/*art*/pverz,T_jv_k,T_jetztvon_l,/*TxBp*/&Tx,/*Txi*/T_Jetztvon_Erklaerung,/*wi*/0,/*Txi2*/-1,/*rottxt*/nix,/*wert*/-1,/*woher*/0);
+	opn<<new optcl(/*pptr*/&obnochmal,/*art*/puchar,T_nm_k,T_nochmal_l,/*TxBp*/&Tx,/*Txi*/T_Nochmal_Erklaerung,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/1);
 	opn<<new optcl(/*pname*/"tbn",/*pptr*/&tbn,/*art*/pstri,/*kurzi*/T_tb_k,/*langi*/T_tabelle_l,/*TxBp*/&Txd,/*Txi*/T_verwendet_die_Tabelle_string_anstatt,/*wi*/1,/*Txi2*/-1,/*rottxt*/nix,/*wert*/1,/*woher*/!tbn.empty());
 	dhcl::virtinitopt(); //α
 } // void hhcl::virtinitopt
@@ -442,7 +456,7 @@ void hhcl::pvirtfuehraus() //α
 	cmd="rename '.DCM' '' "+*suchvz+"/*";
 	systemrueck(cmd,obverb,oblog);
 	// sonst Fehler zu viele offene Dateien
-	cmd="find "+*suchvz+" -type f -not -path '*\\.*' -newermt '20170101' "/*-not -newermt '20191111'*/" -not -path '*DICOMDIR*'";
+	cmd="find "+*suchvz+" -type f \\( -not -name '*.*' -o -iname '*.dcm' \\) -newermt '20170101' "/*-not -newermt '20191111'*/" -not -path '*DICOMDIR*'";
 	systemrueck(cmd,obverb,oblog,&rueck);
 	if (!rueck.size()) {
 	 fLog(rots+Tx[T_Keine_Dateien_in]+blau+*suchvz+rot+Tx[T_Gefunden]+schwarz,1,0);
@@ -453,7 +467,8 @@ void hhcl::pvirtfuehraus() //α
 		fLog(blaus+ltoan(rueck.size())+schwarz+Tx[T_Dateien_in]+blau+qvz+schwarz+Tx[T_Gefunden],1,0);
 		for(size_t nr=0;nr<rueck.size();nr++) {
 			datcl dat(rueck[nr]);
-			if (dat.inDB(*this,aktc)) {
+			ulong neuin = dat.inDB(*this,aktc);
+			if (neuin || obnochmal) {
 				dat.aufPlatte(*this,aktc,nr);
 			}
 		} // 	for(size_t nr=0;nr<rueck.size();nr++)
