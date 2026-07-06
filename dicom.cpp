@@ -223,6 +223,20 @@ const unsigned mtage=30; // mittleres Intervall fuer Faxtabellenkorrektur, 1 Mon
 const unsigned ltage=73000; // langes Intervall fuer Faxtabellenkorrektur, 200 Jahre
 using namespace std; //ω
 
+// TEMP-Fix 2026-07-06: siehe dicom.h
+void hhcl::kexit(int code)
+{
+	if (My) {
+		for (size_t i=0;i<My->conz;i++) {
+			if (My->conn[i]) {
+				mysql_close(My->conn[i]);
+				My->conn[i]=0;
+			}
+		}
+	}
+	exit(code);
+} // void hhcl::kexit(int code)
+
 void hhcl::rufpruefsamba()
 {
 	hLog(violetts+Tx[T_rufpruefsamba]);
@@ -270,7 +284,7 @@ void pruefdictab(DB *My,const string& tbn,int obverb,int oblog)
  };
  Tabelle tad(My,tbn,felder,elemzahl(felder),/*indices=*/0,/*index size*/0,/*constraints*/0,/*constrzahl*/0,Tx[T_Tabelle_fuer_dicom_Bilder]);
  if (tad.prueftab(aktc,obverb)) {
-	 exit(schluss(11,rots+Tx[T_Fehler_beim_Pruefen_von_dictab]+schwarz+tbn,1));
+	 kexitDB(My,schluss(11,rots+Tx[T_Fehler_beim_Pruefen_von_dictab]+schwarz+tbn,1));
  }
 } // void paramcl::pruefdictab
 
@@ -396,15 +410,15 @@ void hhcl::neurf()
 void hhcl::virtpruefweiteres()
 {
 	hLog(violetts+Tx[T_virtpruefweiteres]+schwarz); //ω
-	// if (initDB()) exit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab])); //α //ω
+	// if (initDB()) kexit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab])); //α //ω
 	verzeichnisse();
 	if (!anhl && suchstr.empty())
 		rufpruefsamba();
 	if (logdateineu) tuloeschen(logdt,string(),obverb,oblog);
 	hLog(Txk[T_Logpfad]+drots+loggespfad+schwarz+Txk[T_oblog]+drot+ltoan((int)oblog)+schwarz+")");
-	// if (initDB()) exit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab])); //α //ω
+	// if (initDB()) kexit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab])); //α //ω
 	if (initDB()) {
-		exit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab]));
+		kexit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab]));
 	}
 	pruefdictab(My,tbn, obverb,oblog);
 	hcl::virtpruefweiteres(); // z.Zt. leer //α
@@ -446,7 +460,7 @@ void hhcl::pvirtnachvi()
 void hhcl::pvirtnachrueckfragen() // pvirtvorpruefggfmehrfach()
 {
 	hLog(violetts+Tx[T_pvirtnachrueckfragen]+schwarz);
-	// if (initDB()) exit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab]));  //ω
+	// if (initDB()) kexit(schluss(10,Tx[T_Datenbank_nicht_initialisierbar_breche_ab]));  //ω
 	prueftif(TIFFGetVersion());
 	pruefdcmtk();
 } // void hhcl::pvirtnachrueckfragen //α
@@ -456,7 +470,7 @@ void hhcl::pvirtfuehraus() //α
 	hLog(violetts+Tx[T_pvirtfuehraus]+schwarz); //ω
 	const size_t aktc{0};
 	if (obrueck) 
-		exit(dorueck(aktc));
+		kexit(dorueck(aktc));
 	machimpvz();
 	svec rueck;
 	const string* suchvz{richtalte?&avz:&qvz};
