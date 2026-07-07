@@ -2,7 +2,7 @@
 .\" manual page for ²DPROG²
 .\" write to geraldschade@gmx.de if You discover an error or a deficit in the program
 .pc
-.TH man 1 "06.07.26" "Version 0.10224" "\fB²DPROG²\fR man page"
+.TH man 1 "07.07.26" "Version 0.10228" "\fB²DPROG²\fR man page"
 .hy 0
 .SH NAME
 \fB²DPROG² \- DICOM import\fR: reads DICOM files, converts them to PNG images and records their metadata in a MariaDB database
@@ -40,7 +40,7 @@ If a file is already present in the database, it is skipped by default (option \
 .SH OPTIONS
  '\fB²DPROG² -?\fR' or '\fB²DPROG² -h\fR' shows the important command line options and '\fB²DPROG² -lh\fR' all of them. The configuration file can be edited directly by '\fB²DPROG² -vi\fR' or interactively by '\fB²DPROG² -rf\fR'.
 .br
-                                                                                                                                                                                                                                          \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10224 \fR
+                                                                                                                                                                                                                                          \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10228 \fR
 .br
 \fBOptions which are not saved (current value in parentheses): \fR
 .br
@@ -102,11 +102,15 @@ If a file is already present in the database, it is skipped by default (option \
 .br
 \fB -host, --host <string>\fR: takes the database on host <string> instead of ('\fBlocalhost\fR')
 .br
+\fB -mcnfdat, --mcnfdat <string>\fR: uses the MySQL/MariaDB defaults-extra-file <string> for root commands instead of ('\fB\fR')
+.br
 \fB -muser, --muser <string>\fR: takes the user <string> for MySQL/MariaDB instead of ('\fB\fR')
 .br
 \fB -mpwd, --mpwd <string>\fR: takes the password <string> for MySQL/MariaDB
 .br
 \fB -db, --database <string>\fR: uses the database <string> instead of ('\fB\fR')
+.br
+\fB -sz, --locktimeout <zahl>\fR: sets the maximum wait time for external table locks to <zahl> seconds (lock_wait_timeout) instead of (\fB180\fR)
 .br
 \fB -lg, --language <string>\fR: Language/Sprache/Lingue/Lingua [\fBd\fReutsch,\fBe\fRnglisch] ('\fBe\fR')
 .br
