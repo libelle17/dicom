@@ -1,5 +1,5 @@
 .br
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10222 \fR
+                                                                                                                                                                                                                                          \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10230 \fR
 .br
 \fBOptions which are not saved (current value in parentheses): \fR
 .br
@@ -61,11 +61,17 @@
 .br
 \fB -host, --host <string>\fR: takes the database on host <string> instead of ('\fBlocalhost\fR')
 .br
+\fB -mcnfdat, --mcnfdat <string>\fR: uses the MySQL/MariaDB defaults-extra-file <string> for root commands instead of ('\fB\fR')
+.br
 \fB -muser, --muser <string>\fR: takes the user <string> for MySQL/MariaDB instead of ('\fB\fR')
 .br
 \fB -mpwd, --mpwd <string>\fR: takes the password <string> for MySQL/MariaDB
 .br
+\fB -cmpwd, --changemariadbpwd <string>\fR: changes the MySQL/MariaDB password to <string> (stores it encrypted in the configuration) and exits afterwards without further processing\fB or not\fR
+.br
 \fB -db, --database <string>\fR: uses the database <string> instead of ('\fB\fR')
+.br
+\fB -sz, --locktimeout <zahl>\fR: sets the maximum wait time for external table locks to <zahl> seconds (lock_wait_timeout) instead of (\fB180\fR)
 .br
 \fB -lg, --language <string>\fR: Language/Sprache/Lingue/Lingua [\fBd\fReutsch,\fBe\fRnglisch] ('\fBe\fR')
 .br
@@ -76,5 +82,7 @@
 \fB -l, --log <zahl>\fR: put detailed logs in file '\fB/var/log/dicom.log\fR' (otherwise shorter) (\fB0\fR)
 .br
 \fB -cm, --cronminutes <string>\fR: every how many minutes shall \fBdicom\fR be called in crontab (0=not at all), instead of  ('\fB0\fR')
+.br
+\fB -cr, --cronhosts <string>\fR: comma-separated short host names (before the first dot) on which the crontab entry is self-maintained ('\fBlinux1\fR')
 .br
 \fB -autoupd, --autoupdate <zahl>\fR: Update program automatically (\fB1\fR)

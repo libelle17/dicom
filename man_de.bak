@@ -2,7 +2,7 @@
 .\" Manual-Seite für ²DPROG²
 .\" Schreiben Sie an geraldschade@gmx.de, wenn Sie Fehler oder Mängel entdeckt haben
 .pc
-.TH man 1 "05.07.26" "Version 0.10222" "Manual-Seite für ²DPROG²"
+.TH man 1 "12.10.26" "Version 0.1023" "Manual-Seite für ²DPROG²"
 .hy 0
 .SH NAME
 \fB²DPROG² \- DICOM-Import\fR: liest DICOM-Dateien ein, wandelt sie in PNG-Bilder um und trägt ihre Metadaten in eine MariaDB-Datenbank ein
@@ -42,7 +42,7 @@ Ist eine Datei bereits in der Datenbank vorhanden, wird sie standardmäßig übe
 .SH OPTIONEN
  '\fB²DPROG² -?\fR' oder '\fB²DPROG² -h\fR' zeigt die wichtigen Befehlszeilenoptionen und '\fB²DPROG² -lh\fR' alle. Die Konfigurationsdatei kann über '\fB²DPROG² -vi\fR' direkt editiert oder über '\fB²DPROG² -rf\fR' interaktiv gepflegt werden.
 .br
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10222 \fR
+                                                                                                                                                                                                                                          \fRProgramm: \fB/root/dicom/dicom\fR, V: \fB0.10230 \fR
 .br
 \fBOptionen, die nicht gespeichert werden (aktueller Wert in Klammern): \fR
 .br
@@ -104,11 +104,17 @@ Ist eine Datei bereits in der Datenbank vorhanden, wird sie standardmäßig übe
 .br
 \fB -host, --host <string>\fR: verwendet die Datenbank auf Host <string> anstatt auf ('\fBlocalhost\fR')
 .br
+\fB -mcnfdat, --mcnfdat <string>\fR: verwendet fuer MySQL/MariaDB-Rootbefehle die defaults-extra-file <string> anstatt ('\fB\fR')
+.br
 \fB -muser, --muser <string>\fR: verwendet fuer MySQL/MariaDB den Benutzer <string> anstatt ('\fB\fR')
 .br
 \fB -mpwd, --mpwd <string>\fR: verwendet fuer MySQL/MariaDB das Passwort <string>
 .br
+\fB -cmpwd, --changemariadbpwd <string>\fR: aendert das MySQL/MariaDB-Passwort <string> (speichert es verschluesselt in der Konfiguration) und beendet danach, ohne weiter zu arbeiten\fB oder nicht\fR
+.br
 \fB -db, --datenbank <string>\fR: verwendet die Datenbank <string> anstatt ('\fB\fR')
+.br
+\fB -sz, --sperrzeit <zahl>\fR: setzt die maximale Wartezeit bei fremden Tabellensperren auf <zahl> Sekunden (lock_wait_timeout) anstatt (\fB180\fR)
 .br
 \fB -sp, --sprache <string>\fR: Language/Sprache/Lingue/Lingua [\fBd\fReutsch,\fBe\fRnglisch] ('\fBd\fR')
 .br
@@ -119,6 +125,8 @@ Ist eine Datei bereits in der Datenbank vorhanden, wird sie standardmäßig übe
 \fB -l, --log <zahl>\fR: protokolliert ausfuehrlich in Datei '\fB/var/log/dicom.log\fR' (sonst knapper) (\fB0\fR)
 .br
 \fB -cm, --cronminuten <string>\fR: alle wieviel Minuten soll \fBdicom\fR ueber crontab aufgerufen werden (0=gar nicht), anstatt  ('\fB0\fR')
+.br
+\fB -cr, --cronrechner <string>\fR: kommagetrennte Kurz-Rechnernamen (vor dem ersten Punkt), auf denen der Crontab-Eintrag selbst gepflegt wird ('\fBlinux1\fR')
 .br
 \fB -autoakt, --autoaktual <zahl>\fR: Programm automatisch aktualisieren (\fB1\fR)
 .SH FUNKTIONSWEISE
